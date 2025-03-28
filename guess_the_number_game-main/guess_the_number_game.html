@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>숫자 맞추기 게임</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/guess_the_number_game.js"></script>
+    <link rel="stylesheet" href="./css/guess_the_number_game.css">
+
+  </head>
+  <body>
+    <div class="wrap">
+      <h2>숫자 맞추기 게임</h2>
+        <h3>1부터 100까지 랜덤한 숫자 중
+          <br> 1가지 숫자를 맞춰보세요!</h3>
+          <input id="input_11" type="number" value="1" min="1" max="100" onchange='input_1()'/>
+          <!-- onkeyup은 키보드가 눌려졌을때 이벤트이다.  -->
+          <!-- onchange는 엔터를 누를때 이벤트이다. -->
+          <div class="correct_1_1"></div>
+          <div class="correct_1"></div>
+          <div class="correct_2"></div>
+        <p class="rule">
+          - 정답은 1 ~ 100사이에 있어요<br>
+          - 5번의 기회가 주어져요 <br>
+          - 제시한 숫자가 높거나 낮을 경우 알려드릴게요<br>
+        </p>
+        <div class="correct_3">
+          <button onClick="window.location.reload()">다시하기 !</button>
+        </div>
+    </div>
+
+  </body>
+</html>
