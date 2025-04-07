@@ -142,20 +142,8 @@
     flex: 1;
     justify-content: space-between;
     position: relative;
-    gap: 22px;
   }
-  
-  .contentWrap.on:after{
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 53.4%;
-    transform: translate(0,-50%);
-    width: 15px;
-    height: 26px;
-    clip-path: polygon(0 0, 100% 50%, 0 100%);
-    background: #F39A9A;
-  }
+
   .contentWrap .lineBox {
     padding: 5px;
   }
@@ -168,9 +156,8 @@
     justify-content: space-between;
     padding: 5px;
   }
-  .pageWrap {
-    width: 471px;
-  }
+    
+
   .pageWrap [class*="page"] {
     display: none;
   }
@@ -180,11 +167,26 @@
   
   
   .contentWrap .leftList {
+    position: relative;
     display: flex;
     height: 58px;
     gap: 5px;
     margin: 0 0 8px;
   }
+
+  .contentWrap.on .leftList.on:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 103%;
+    transform: translate(0, -50%);
+    width: 15px;
+    height: 26px;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    background: #F39A9A;
+  }
+
+
 
   .contentWrap .leftList.on  .listBox{
     pointer-events: none;
@@ -194,7 +196,7 @@
   }
   .contentWrap .leftList .listBox {
     justify-content: space-between;
-    width: 428px;
+    width: 409px;
     gap: 0;
     padding: 9px 6px;
     cursor: pointer;
@@ -273,15 +275,17 @@
   
   
   /* ~~~~~~~~content_right~~~~~~~~~~` */
+  
+  .contentWrap .content_right  {
+    /* width: 412px; */
+  }
+
   .contentWrap .content_right .beginText {
     font-size: 45px;
     letter-spacing: -1px;
     margin: 0 auto;
   }
 
-  .contentWrap .content_right  {
-    width: 412px;
-  }
   .contentWrap.on .content_right  {
     flex-direction: column;
   }
@@ -295,7 +299,6 @@
   }
   .contentWrap.on .content_right .rightOnBox {
     display: block;
-    padding: 10px;
     box-sizing: border-box;
   }
   
@@ -372,6 +375,7 @@
   }
   .rightImgBox .topIcons{
     display: flex;
+    flex-direction: row-reverse;
     gap: 10px;
     position: absolute;
     top: 10px;

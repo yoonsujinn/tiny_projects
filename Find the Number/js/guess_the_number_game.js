@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded',function()  {
   const input = document.querySelector('input')
+  const button = document.querySelector('button')
   let random1 = Math.floor(Math.random() * 100 ) + 1;
   let inputCount = document.querySelector('.inputCount')
   let expect = document.querySelector('.expect')
@@ -11,9 +12,16 @@ document.addEventListener('DOMContentLoaded',function()  {
   let min = 0;
   let max = 0;
 
+
+  button.addEventListener('click', function() {
+    numSubmit();
+  });
+
   function numSubmit()  {
-    
-    console.log(input)
+    console.log('qqq')
+  }
+  })
+  
     // var in_1 = document.getElementById('input_11').value;
     //   // in_1변수를 선언 > input_11 에 입력된 값을 가져온다.
     // arr[i] = in_1;
@@ -53,11 +61,6 @@ document.addEventListener('DOMContentLoaded',function()  {
     //       $(".correct_1_1").text("예상한 숫자들은 "+arr+" 이에요.");
     //     }
     //     }
-      }
-
-
-})
-  
-
+      // }
 
 

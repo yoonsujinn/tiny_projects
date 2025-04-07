@@ -17,6 +17,16 @@ const playList = [
   new Audio("./mp3/nat02_01_01_01_a_a3_01_3.mp3"),
 ]
 
+const data = [
+  {
+    icon : "type1",
+    text : "그림책을 읽고, ‘계절’에 대해 이야기해요.",
+    // audioSrc : "./mp3/nat02_01_01_01_a_a3_01_1.mp3"
+  },
+  
+]
+console.log(data)
+
 
 document.addEventListener("DOMContentLoaded", function () {
   // 음원 재생!!
@@ -57,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
 
-    
 
 
   leftList.forEach((leftListELe,index) => {
@@ -77,8 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         topIcons[1].classList.remove(`type${i}`)
       }
       if(index == 0) {  //하단 설명 글 + 아이콘 삽입
-          topIcons[0].classList.add(`type1`);
-          toprightOnBoxText.innerHTML="그림책을 읽고, ‘계절’에 대해 이야기해요. "
+       
       } else if(index == 1) {
           topIcons[0].classList.add(`type7`);
           spiker.classList.add('on')
