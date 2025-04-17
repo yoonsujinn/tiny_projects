@@ -17,15 +17,91 @@ const playList = [
   new Audio("./mp3/nat02_01_01_01_a_a3_01_3.mp3"),
 ]
 
+
 const data = [
-  {
-    icon : "type1",
+
+  { //index 0
+    icon_1 : "type1",
     text : "그림책을 읽고, ‘계절’에 대해 이야기해요.",
-    // audioSrc : "./mp3/nat02_01_01_01_a_a3_01_1.mp3"
   },
-  
+  { //index 1
+    icon_1 : "type7",
+    text : "좋아하는 계절과 그 까닭을 찾아보고, ‘봄이 가고 여름 오면‘ 노래를 불러 봐요.",
+    audioSrc : "./mp3/nat02_01_01_01_a_a3_01_1.mp3"
+  },
+  { //index 2
+    icon_1 : "type2",
+    text : "계절을 대표하는 동식물을 관찰하며 계절의 변화를 느껴 봐요.",
+  },
+  { //index 3
+    icon_1 : "type7",
+    icon_2 : "type5",
+    text : "‘가을이 오는 소리‘ 노래를 부르며, 자연의 소리를 느껴 봐요.",
+    audioSrc : "./mp3/nat02_01_01_01_a_a3_01_1.mp3"
+  },
+  { //index 4
+    text : "계절과 날씨에 어울리는 옷차림을 알아봐요.",
+  },
+  { //index 5
+    icon_1 : "type6",
+    text : "계절에 어울리는 색을 골라 사계절을 표현해요.",
+  },
+  { //index 6
+    icon_1 : "type6",
+    icon_2 : "",
+    text : "좋아하는 계절의 풍경을 다양한 방법으로 나타내 봐요.",
+  },
+  { //index 7
+    icon_1 : "type3",
+    text : "우리 주변의 자연물을 이용해 다양한 놀이를 해 봐요.",
+  },
+  { //index 8
+    icon_1 : "type7",
+    text : "‘잠자리 꽁꽁‘ 노래를 부르며 가을의 시작을 맞이해요.",
+    audioSrc : "./mp3/nat02_01_01_01_a_a3_01_1.mp3"
+  },
+  { //index 9
+    text : "24절기를 조사하며 계절의 변화를 알아봐요.",
+  },
+  { //index 10
+    text : "계절별 식재료와 음식을 알아봐요.",
+  },
+  { //index 11
+    icon_1 : "type6",
+    icon_2 : "type5",
+    text : "다양한 열매를 관찰하고, 열매의 모습을 그려 봐요.",
+  },
+  { //index 12
+    text : "계절이 담긴 그림을 보며 아름다움을 느껴 보고, 열매 얼굴을 꾸며 직접 표현해 봐요.",
+  },
+  { //index 13
+    text : "계절마다 학교에서는 어떤 활동을 하는지 떠올려 봐요.",
+  },
+  { //index 14
+    icon_1 : "type7",
+    text : "‘가을 길‘ 노래를 부르고, 노랫말에 어울리는 동작을 만들어 표현해 봐요.",
+  },
+  { //index 15
+    icon_1 : "type6",
+    text : "계절과 장소에 따라 사람들이 하는 일을 알아보고,내가 사는 곳의 모습을 그림으로 표현해 봐요.",
+  },
+  { //index 16
+    icon_1 : "type2",
+    text : "계절에 따라 사용하는 물건이 어떻게 달라지는지 알아봐요.",
+  },
+  { //index 17
+    text : "나들이 계획을 세우고, 나들이를 하며 계절의 소중함을 느껴 봐요.",
+  },
+  { //index 18
+    icon_1 : "type2",
+    text : "우리나라 사계절 날씨의 특징을 알아보고, 일기 예보 놀이를 해요.",
+  },
+  { //index 19
+    icon_1 : "type5",
+    text : "계절을 담아 교실을 꾸미며 계절의 아름다움을 느껴 봐요.",
+  }
+
 ]
-console.log(data)
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -74,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
       spiker.classList.remove('on')
       spikerOff()
       leftList.forEach(ele=>{ele.classList.remove('on')}) // 클릭하면 모든 li의 on클래스를 지운다
-      
       leftListELe.classList.add('on') //클릭한 요소만 on클래스 붙임
       contentWrap.classList.add('on')
       for (let i = 0; i <= leftList.length; i++) {
@@ -85,66 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
         topIcons[0].classList.remove(`type${i}`)
         topIcons[1].classList.remove(`type${i}`)
       }
-      if(index == 0) {  //하단 설명 글 + 아이콘 삽입
-       
-      } else if(index == 1) {
-          topIcons[0].classList.add(`type7`);
-          spiker.classList.add('on')
-          toprightOnBoxText.innerHTML="좋아하는 계절과 그 까닭을 찾아보고, ‘봄이 가고 여름 오면‘ 노래를 불러 봐요."
-      } else if(index == 2) {
-          topIcons[0].classList.add(`type2`);
-          toprightOnBoxText.innerHTML="계절을 대표하는 동식물을 관찰하며 계절의 변화를 느껴 봐요."
-      } else if(index == 3) {
-          topIcons[0].classList.add(`type7`);
-          topIcons[1].classList.add(`type5`);
-          spiker.classList.add('on')
-          toprightOnBoxText.innerHTML="‘가을이 오는 소리‘ 노래를 부르며, 자연의 소리를 느껴 봐요."
-      } else if(index == 4) {
-          toprightOnBoxText.innerHTML="계절과 날씨에 어울리는 옷차림을 알아봐요."
-      } else if(index == 5) {
-          topIcons[0].classList.add(`type6`);
-          toprightOnBoxText.innerHTML="계절에 어울리는 색을 골라 사계절을 표현해요."
-      } else if(index == 6) {
-          topIcons[0].classList.add(`type6`);
-          toprightOnBoxText.innerHTML="좋아하는 계절의 풍경을 다양한 방법으로 나타내 봐요."
-      } else if(index == 7) {
-          topIcons[0].classList.add(`type3`);
-          toprightOnBoxText.innerHTML="우리 주변의 자연물을 이용해 다양한 놀이를 해 봐요."
-      } else if(index == 8) {
-          topIcons[0].classList.add(`type7`);
-          spiker.classList.add('on')
-          toprightOnBoxText.innerHTML="‘잠자리 꽁꽁‘ 노래를 부르며 가을의 시작을 맞이해요."
-      } else if(index == 9) {
-          toprightOnBoxText.innerHTML="24절기를 조사하며 계절의 변화를 알아봐요."
-      } else if(index == 10) {
-          toprightOnBoxText.innerHTML="계절별 식재료와 음식을 알아봐요."
-      } else if(index == 11) {
-          topIcons[0].classList.add(`type6`);
-          topIcons[1].classList.add(`type5`);
-          toprightOnBoxText.innerHTML="다양한 열매를 관찰하고, 열매의 모습을 그려 봐요."
-      } else if(index == 12) {
-          toprightOnBoxText.innerHTML="계절이 담긴 그림을 보며 아름다움을 느껴 보고, 열매 얼굴을 꾸며 직접 표현해 봐요."
-      } else if(index == 13) {
-          toprightOnBoxText.innerHTML="계절마다 학교에서는 어떤 활동을 하는지 떠올려 봐요."
-      } else if(index == 14) {
-          topIcons[0].classList.add(`type7`);
-          spiker.classList.add('on')
-          toprightOnBoxText.innerHTML="‘가을 길‘ 노래를 부르고, 노랫말에 어울리는 동작을 만들어 표현해 봐요."
-      } else if(index == 15) {
-          topIcons[0].classList.add(`type6`);
-          toprightOnBoxText.innerHTML="계절과 장소에 따라 사람들이 하는 일을 알아보고,내가 사는 곳의 모습을 그림으로 표현해 봐요."
-      } else if(index == 16) {
-          topIcons[0].classList.add(`type2`);
-          toprightOnBoxText.innerHTML="계절에 따라 사용하는 물건이 어떻게 달라지는지 알아봐요."
-      } else if(index == 17) {
-          toprightOnBoxText.innerHTML="나들이 계획을 세우고, 나들이를 하며 계절의 소중함을 느껴 봐요."
-      } else if(index == 18) {
-          topIcons[0].classList.add(`type2`);
-          toprightOnBoxText.innerHTML="우리나라 사계절 날씨의 특징을 알아보고, 일기 예보 놀이를 해요."
-      } else if(index == 19) {
-        topIcons[0].classList.add(`type5`);
-        toprightOnBoxText.innerHTML="계절을 담아 교실을 꾸미며 계절의 아름다움을 느껴 봐요."
-      }
+      toprightOnBoxText.innerHTML =`${data[index].text}`
+      // console.log(data[0].text)
     })
   });
 
@@ -177,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
         spikerOff()
         pageWrapLi.forEach(ele => {ele.classList.remove('on')})  //left페이지모두 off
         pageWrapLi[idx].classList.add('on') //  idx일치하는 left페이지 on
-        
       })
     });
 
