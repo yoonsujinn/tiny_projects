@@ -277,10 +277,11 @@
   /* ~~~~~~~~content_right~~~~~~~~~~` */
   
   .contentWrap .content_right  {
-    /* width: 412px; */
+    /* width: 406px !important; */
   }
 
   .contentWrap .content_right .beginText {
+    width: 392px;
     font-size: 45px;
     letter-spacing: -1px;
     margin: 0 auto;
@@ -415,7 +416,7 @@
     background: url(../images/iconImg/rightTopIcon.svg) 0px -311.6px / 158px 361px no-repeat;
   }
   
-  .rightImgBox .spiker{
+  .rightImgBox .speaker{
     position: absolute;
     display: none;
     right: 10px;
@@ -424,9 +425,9 @@
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
-    background: rgba(255, 255, 255,0.5) url(../images/iconImg/spiker.png) center / 86% no-repeat;
+    background: rgba(255, 255, 255,0.5) url(../images/iconImg/speaker.png) center / 86% no-repeat;
   }
-  .spiker.on{
+  .speaker.on{
     display: block;
   }
   

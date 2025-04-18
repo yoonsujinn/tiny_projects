@@ -8,15 +8,9 @@ const leftList = document.querySelectorAll('.contentWrap .leftList')
 const rightOnBox = document.querySelector('.rightOnBox')
 const topIcons = document.querySelectorAll('.topIcons .icon')
 const toprightOnBoxText = document.querySelector('.rightOnBox p')
-const spiker = document.querySelector('.spiker')
+const speaker = document.querySelector('.speaker')
 const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
-const playList = [
-  new Audio("./mp3/nat02_01_01_01_a_a3_01_1.mp3"),
-  new Audio("./mp3/nat02_01_01_01_a_a3_01_2.mp3"),
-  new Audio("./mp3/nat02_01_01_01_a_a3_01_3.mp3"),
-]
-
 
 const data = [
 
@@ -37,7 +31,7 @@ const data = [
     icon_1 : "type7",
     icon_2 : "type5",
     text : "‘가을이 오는 소리‘ 노래를 부르며, 자연의 소리를 느껴 봐요.",
-    audioSrc : "./mp3/nat02_01_01_01_a_a3_01_1.mp3"
+    audioSrc : "./mp3/nat02_01_01_01_a_a3_01_2.mp3"
   },
   { //index 4
     text : "계절과 날씨에 어울리는 옷차림을 알아봐요.",
@@ -48,7 +42,7 @@ const data = [
   },
   { //index 6
     icon_1 : "type6",
-    icon_2 : "",
+    // icon_2 : "",
     text : "좋아하는 계절의 풍경을 다양한 방법으로 나타내 봐요.",
   },
   { //index 7
@@ -58,7 +52,7 @@ const data = [
   { //index 8
     icon_1 : "type7",
     text : "‘잠자리 꽁꽁‘ 노래를 부르며 가을의 시작을 맞이해요.",
-    audioSrc : "./mp3/nat02_01_01_01_a_a3_01_1.mp3"
+    audioSrc : "./mp3/nat02_01_01_01_a_a3_01_3.mp3"
   },
   { //index 9
     text : "24절기를 조사하며 계절의 변화를 알아봐요.",
@@ -100,26 +94,28 @@ const data = [
     icon_1 : "type5",
     text : "계절을 담아 교실을 꾸미며 계절의 아름다움을 느껴 봐요.",
   }
-
 ]
 
+let playAudio;
 
 document.addEventListener("DOMContentLoaded", function () {
+
+
   // 음원 재생!!
-  spiker.addEventListener('click',function() {
-    if(rightOnBox.classList.contains('on1')) {
-      playList[0].play()
-    }
-    if(rightOnBox.classList.contains('on3')) {
-      playList[1].play()
-    }
-    if(rightOnBox.classList.contains('on8')) {
-      playList[2].play()
-    }
-    if(rightOnBox.classList.contains('on14')) {
-      playList[2].play()
-    }
+  speaker.addEventListener('click',function() {
+    box = speaker.closest('.rightOnBox')
+    box_onClass = [...box.classList].find(e => e.startsWith('on'))
+    box_onClass = box_onClass.replace("on","")
+    playAudio = new Audio(data[box_onClass].audioSrc)
+    playAudio.play()
   })
+
+
+  // 음원 정지!!
+  function speakerOff() {
+    if(playAudio != undefined) {playAudio.pause();}
+  }
+
 
   // 좋아요 기능~~~~
   goodButton.forEach(ele => {
@@ -134,21 +130,11 @@ document.addEventListener("DOMContentLoaded", function () {
       leftList.forEach(ele => {ele.classList.remove('on')})
     }
   
-    //음원끄기
-    function spikerOff() {
-      playList.forEach(element => {
-        element.pause();
-        element.currentTime = 0; 
-      });
-    }
-    
-
-
 
   leftList.forEach((leftListELe,index) => {
     leftListELe.children[0].addEventListener('click', function ()  {
-      spiker.classList.remove('on')
-      spikerOff()
+      speaker.classList.remove('on')
+      speakerOff()
       leftList.forEach(ele=>{ele.classList.remove('on')}) // 클릭하면 모든 li의 on클래스를 지운다
       leftListELe.classList.add('on') //클릭한 요소만 on클래스 붙임
       contentWrap.classList.add('on')
@@ -161,7 +147,11 @@ document.addEventListener("DOMContentLoaded", function () {
         topIcons[1].classList.remove(`type${i}`)
       }
       toprightOnBoxText.innerHTML =`${data[index].text}`
-      // console.log(data[0].text)
+      topIcons[0].classList.add(`${data[index].icon_1}`)
+      topIcons[1].classList.add(`${data[index].icon_2}`)
+      if(data[index].audioSrc){
+        speaker.classList.add('on')
+      }
     })
   });
 
@@ -191,14 +181,11 @@ document.addEventListener("DOMContentLoaded", function () {
           next.classList.add('on')
         }
         listOnReset()
-        spikerOff()
+        speakerOff()
         pageWrapLi.forEach(ele => {ele.classList.remove('on')})  //left페이지모두 off
         pageWrapLi[idx].classList.add('on') //  idx일치하는 left페이지 on
       })
     });
-
-    // 다음/이전버튼 클릭했을때
-
 
     //다음 버튼 클릭했을때
     next.addEventListener('click', ()=> {
@@ -216,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
         prev.classList.add('on')
       }
       listOnReset()
-      spikerOff()
+      speakerOff()
     })
 
     prev.addEventListener('click', ()=> {
@@ -234,6 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
         next.classList.add('on')
       }
       listOnReset()
-      spikerOff()
+      speakerOff()
     })
 });
