@@ -435,7 +435,8 @@
   .rightOnBox p {
     display: block;
     width: 392px;
-    margin: 20px 0 0 0;
+    padding: 20px 10px;
+    box-sizing: border-box;
     word-break: break-all;
     text-align: justify;
     font-size: 27px;

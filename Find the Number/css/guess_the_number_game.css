@@ -161,42 +161,38 @@ html, body {
 }
 
 .inputCount, .expect, .upDown{
-    width: 100%;
-    text-align: center;
-    height: 30px;
+    display: flex;
+    align-items: center;
   }
 
-  .inputCount{
-    font-size: 14px;
-    height: 19px;
+  .upDown {
+    font-weight: bold;
+    height: 40px;
+
+    
+  }
+  .inputCount, .expect{
+    height: 25px;
+  }
+  .inputCount {
+    margin: 0 0 10px 0;
   }
 
 
 	.wrap .replay > button{
 		width: 150px;
 		height: 39px;
+    margin: 30px 0 0 0;
+    word-spacing: -0.3em;
 		border-radius: 2px;
 		border: 1px solid rgba(114, 98, 98, 0.2);
-		box-shadow: 2px 2px 0px rgb(197, 165, 175), 3px 2px 0px rgba(255, 247, 247, 0.959) inset;
-		cursor: pointer;
 		background: #fff1f7;
 		color: #633043;
+		cursor: pointer;
 		font-size: 13px;
+		box-shadow: 2px 2px 0px rgb(197, 165, 175), 3px 2px 0px rgba(255, 247, 247, 0.959) inset;
 	}
 
-	.wrap .correct{
-		border-radius: 50%;
-		background: #fff;
-		width: 100px;
-		height: 100px;
-	}
-
-	.wrap .correct p {
-		color: #000;
-		font-weight: bold;
-		font-size: 80px;
-		text-align: center;
-	}
 
 
   /* @media screen and (min-width:1px) and (max-width:601px) {

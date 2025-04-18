@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>숫자 맞추기 게임</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./css/guess_the_number_game.css">
 
   </head>
@@ -20,7 +19,7 @@
       <h1>숫자 맞추기 게임</h1>
         <h2>1부터 100까지 숫자 중에<br>하나를 골라서 맞춰보세요😊!</h2>
         <p class="rule">
-          - 정답은 1 ~ 100 사이에요.<br>
+          - 정답은 1이상 ~ 100 이하의 값 이에요.<br>
           - 5번의 기회가 주어져요.<br>
           - 제시하신 숫자가 높거나 낮을 경우 알려드릴게요!<br>
         </p>
@@ -29,12 +28,12 @@
           <button type="submit" form="num">Enter !</button>
         </form>
 
-          <div class="inputCount"></div>
-          <div class="upDown"></div>
-          <div class="expect"></div>
+        <div class="upDown"></div>
+        <div class="expect"></div>
+        <div class="inputCount"></div>
         
         <div class="replay">
-          <button onClick="replay()">다시하기 !</button>
+          <button>다시하기 !</button>
         </div>
     </div>
 
