@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded',function()  {
       upDown.innerHTML = `0보다 큰 숫자를 입력해주세요!`;
     }else {
       arr.push(inputValue)
-      console.log(randomNum)
       if(arr.length <= 4  && inputValue!=randomNum) {
         inputCount.innerHTML = `${arr.length}번 도전했어요! 아직 ${5-arr.length}번의 기회가 남아있어요`
         if(inputValue > randomNum ) {
