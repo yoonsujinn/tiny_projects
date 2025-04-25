@@ -12,3 +12,12 @@ html, body {
 	height:100%;
   background: #F1EFF8;
 }
+
+.deco {
+  position: fixed;
+}
+
+.deco_1 {
+  clip-path: polygon(1% 51%, 29% 38%, 53% 0%, 70% 40%, 100% 49%, 66% 69%, 49% 100%, 35% 66%);
+
+}

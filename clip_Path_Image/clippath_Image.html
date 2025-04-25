@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/clippath_Image.css">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
+<body>
+
+  <div class="wrap">
+
+    <div class="title">
+      <div class="titleIcon"></div>
+      <p>획순 보기</p>
+    </div>
+    <div class="valmun">
+      <div class="valmunIcon"></div>
+      <div class="valmunText">획순에 맞게 마우스로 따라 써 봅시다.</div>
+    </div>
+    <div class="imagesWrap">
+      <div class="svgImg active" data-index="0"></div>
+      <div class="svgImg" data-index="1"></div>
+      <div class="svgImg" data-index="2"></div>
+      <div class="svgImg" data-index="3"></div>
+      <div class="svgImg" data-index="4"></div>
+      <div class="svgImg" data-index="5"></div>
+      <div class="svgImg" data-index="6"></div>
+ 
+    </div>
+    <div class="bottom">
+      <div class="textName">fàn</div>
+      <div class="replayIcon">
+        <div class="replayIcon_inner"></div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded',function() {
+  let svgImg = document.querySelectorAll('[data-index]');
+  let replayIcon_inner = document.querySelector('.replayIcon_inner')
+
+
+  svgImg.forEach(function(ele,index) {
+    let clickIndex;
+    ele.addEventListener('click', function(e) {
+      if(this.classList.contains('active'))
+        this.classList.add('on')
+        this.classList.remove('active')
+        if(this.nextElementSibling){
+          this.nextElementSibling.classList.add('active')
+        }
+    })
+  })
+
+  // svgImg.forEach(ele => {
+  //   ele.addEventListener('click', function(e) {
+
+  //     console.log(this)
+  //     // let firstIndex = [...svgImg].findIndex(ele => ele.classList.contains('off'))
+  //     // if(e.target.getAttribute('data-index') == firstIndex ) {
+  //     //   e.target.classList.remove('off')
+  //     //   e.target.classList.remove('on')
+  //     //   if(svgImg[firstIndex+1] && !svgImg[firstIndex+1].classList.contains('on')) {
+  //     //       svgImg[firstIndex+1].classList.add('on')
+  //     //   }
+  //     // }
+  //   })
+  // }); 
+
+  replayIcon_inner.addEventListener('click',function() {
+    svgImg.forEach(e => {
+      e.classList.remove('on')
+    })
+    svgImg[0].classList.add('active')
+  })
+ 
+})
+
+</script>
+</html>
+
