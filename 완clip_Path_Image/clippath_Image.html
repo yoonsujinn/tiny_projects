@@ -55,9 +55,16 @@ document.addEventListener('DOMContentLoaded',function() {
     })
   })
 
+  replayIcon_inner.addEventListener('click',function() {
+    svgImg.forEach(e => {
+      e.classList.remove('on')
+    })
+    svgImg[0].classList.add('active')
+  })
+})
+
   // svgImg.forEach(ele => {
   //   ele.addEventListener('click', function(e) {
-
   //     console.log(this)
   //     // let firstIndex = [...svgImg].findIndex(ele => ele.classList.contains('off'))
   //     // if(e.target.getAttribute('data-index') == firstIndex ) {
@@ -69,15 +76,6 @@ document.addEventListener('DOMContentLoaded',function() {
   //     // }
   //   })
   // }); 
-
-  replayIcon_inner.addEventListener('click',function() {
-    svgImg.forEach(e => {
-      e.classList.remove('on')
-    })
-    svgImg[0].classList.add('active')
-  })
- 
-})
 
 </script>
 </html>
