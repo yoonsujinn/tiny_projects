@@ -8,6 +8,11 @@
   background: none;
 }
 
+.pointerNone {
+  pointer-events: none;
+  cursor: none;
+}
+
 
 .wrap {
   position: relative;
@@ -39,18 +44,20 @@
 
 .wheelWrap .wheel_1 {
   width: 100%;
+  rotate: 0deg;
+
   background: url(../images/wheel_1.svg) center/ contain no-repeat;
 }
 .wheelWrap .wheel_2 {
   width: 378px;
+  rotate: 0deg;
   background: url(../images/wheel_2.svg) center/ contain no-repeat;
-
 }
 
 .wheelWrap .wheel_3{
   width: 260px;
   background: url(../images/wheel_3.svg) center/ contain no-repeat;
-
+  rotate: 0deg;
 }
 .arrow {
   width: 42px;
@@ -65,7 +72,7 @@
   height: 70px;
   position: absolute;
   top: -50%;
-  left: 85%;
+  left: 84%;
   transform: translate(-50%,-0%);
   background: url(../images/arrow.svg) center / contain no-repeat;
 }
@@ -76,6 +83,7 @@
   right: -2px;
   width: 242px;
   height: 182px;
+  pointer-events: none;
   background: url(../images/bigArrow.svg) center / contain no-repeat;
 }
 
@@ -85,54 +93,120 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border : 1px solid red; */
   position: absolute;
-  width: 60%;
   height: 50%;
-  /* font-size: 17px; */
-  /* line-height: 1; */
-  /* text-align: center; */
-  /* color: #fff; */
+  font-size: 21px;
+  text-align: center;
+  line-height: 1.3;
+  box-sizing: border-box;
   transform-origin: center bottom;
-  /* clip-path: polygon(0% 0%, 100% 0%, 70% 100%, 30% 100%); */
+
+}
+.wheel_3 .sector {
+  left: 21%;
+  width: 152px;
+  padding: 0 0 40px 0;
+  color: #fff;
 }
 
-.sector_2 {
+.wheel_2 .sector {
+  left: 36.5%;
+  width: 112.2px;
+  padding: 0 0 129px 0;
+  color: #000;
+}
+
+.wheel_1 .sector {
+  left: 36%;
+  width: 150.55px;
+  padding: 0 0 189px 0;
+  color: #000;
+}
+
+
+input {
+  width: 70%;
+  text-align: center;
+  font-size: 20px;
+
+}
+
+input::placeholder {
+  color: rgb(151, 151, 151);
+}
+
+
+
+
+.wheel_3 .sector_1 {
+  rotate: 0deg;
+}
+.wheel_3 .sector_2 {
   rotate: 72deg;
 }
-.sector_3 {
+.wheel_3 .sector_3 {
   rotate: 144deg;
 }
-.sector_4 {
+.wheel_3 .sector_4 {
   rotate: 216deg;
 }
-
-.sector_5 {
+.wheel_3 .sector_5 {
   rotate: 288deg;
 }
-
-
-
-/* 
-.sector:after {
-  content: '확대축소';
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  width: 88%;
-  height: 98%;
-  clip-path: polygon(0% 0%, 100% 0%, 70% 100%, 30% 100%);
-  background-color: #4BA6DD;
+/* .wheel_2의 sector------------- */
+.wheel_1 .sector_1,
+.wheel_2 .sector_1 {
+  rotate: 0deg;
 }
- */
+.wheel_1 .sector_2,
+.wheel_2 .sector_2 {
+  rotate: 36deg;
+}
+.wheel_1 .sector_3,
+.wheel_2 .sector_3 {
+  rotate: 72deg;
+}
+.wheel_1 .sector_4,
+.wheel_2 .sector_4 {
+  rotate: 113deg;
+}
+.wheel_1 .sector_5,
+.wheel_2 .sector_5 {
+  rotate: 149deg;
+}
+.wheel_1 .sector_6,
+.wheel_2 .sector_6 {
+  rotate: 185deg;
+}
+.wheel_1 .sector_7,
+.wheel_2 .sector_7 {
+  rotate: 219deg;
+}
+.wheel_1 .sector_8,
+.wheel_2 .sector_8 {
+  rotate: 253deg;
+}
+.wheel_1 .sector_9,
+.wheel_2 .sector_9 {
+  rotate: 290deg;
+}
+.wheel_1 .sector_10,
+.wheel_2 .sector_10 {
+  rotate: 325deg;
+}
+
+
+
+
 
 /* bottom---------------------------- */
 .bottomTop .del {
   position: absolute;
-  width: 75px;
-  aspect-ratio: 1/1;
   right: 10px;
   bottom: 78px;
+  width: 75px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
   background: url(../images/del.svg) center / contain no-repeat;
 }
 
@@ -145,6 +219,7 @@
 .bottom .bottom_BTN_wrap > button {
   width: 157px;
   height: 59px;
+  cursor: pointer;
 }
 
 .bottom .bottom_BTN_wrap > button.wheel_turn {
