@@ -5,31 +5,48 @@ document.addEventListener('DOMContentLoaded', function() {
   const input = document.querySelectorAll('input')
   const wheel_turn = document.querySelector('.wheel_turn')
   const wheel_stop = document.querySelector('.wheel_stop')
-  let rotateID;
-
+  let wheel_1_trans, wheel_2_trans ,wheel_3_trans; 
+  let rotateID_0, rotateID_1, rotateID_2
 
   
-
-
 
   
   
-  // function rotateFunction(time, callback) {
-  // let i = 0;
-  //   rotateID = setInterval(() => {
-  //     i += 2;
-  //     if(i >= 360) {i=0};
-  //       callback(i)
-  //   }, time);
-  // }
 
+  //   rotateID 
+  function rotateFunction(wheelNum,time) {
+    let i = 0;
+    rotateID_wheelNum = setInterval(() => {
+        i += 2;
+      if(i >= 360) {i=0};
+        callback(i)
+    }, time);
 
+  }
+
+      
 
   wheel_turn.addEventListener('click',function() {
-    log('돌리기클릭')
-  //   rotateFunction(11,(callback) => {
-  //     wheel[2].style.transform = `rotate(${callback}deg)`;
-  //   })
+    let wheelNum =[0,1,2]
+
+    rotateFunction(wheelNum[0],10,(callback)=> {
+      console.log(callback,'11111콜백백')
+    })
+    rotateFunction(wheelNum[1],7,(callback)=> {
+      console.log(callback,'222222콜백백')
+
+    })
+    rotateFunction(wheelNum[2],3,(callback)=> {
+      console.log(callback,'333333콜백백')
+
+    })
+    // 콜백을 사용하려고 하면 함수 정의할때 콜백 매개변수를 추가하고,
+    // 호출시 콜백 함수를 넘겨야 함
+    
+  }) 
+    //  => {
+      // wheel[2].style.transform = `rotate(${callback}deg)`;
+    // })
   //   rotateFunction(7,(callback) => {
   //     wheel[1].style.transform = `rotate(${callback}deg)`;
   //   })
@@ -39,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //   this.classList.add('pointerNone')
   //   del.classList.add('pointerNone')
   //   wheel_stop.classList.remove('pointerNone')
-  }) 
+
 
 
 
