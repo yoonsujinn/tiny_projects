@@ -5,84 +5,73 @@ document.addEventListener('DOMContentLoaded', function() {
   const input = document.querySelectorAll('input')
   const wheel_turn = document.querySelector('.wheel_turn')
   const wheel_stop = document.querySelector('.wheel_stop')
-  let wheel_1_trans, wheel_2_trans ,wheel_3_trans; 
-  let rotateID_0, rotateID_1, rotateID_2
-
+  let arrNum;
+  let setTimeArr = []
   
-
-  
-  
-
-  //   rotateID 
-  function rotateFunction(wheelNum,time) {
-    let i = 0;
-    rotateID_wheelNum = setInterval(() => {
-        i += 2;
-      if(i >= 360) {i=0};
-        callback(i)
-    }, time);
-
-  }
-
-      
 
   wheel_turn.addEventListener('click',function() {
-    let wheelNum =[0,1,2]
-
-    rotateFunction(wheelNum[0],10,(callback)=> {
-      console.log(callback,'11111콜백백')
+    rotateFunction(arrNum,10,(callback)=> {
+      wheel[0].style.transform = `rotate(${callback}deg)`
     })
-    rotateFunction(wheelNum[1],7,(callback)=> {
-      console.log(callback,'222222콜백백')
-
+    rotateFunction(arrNum,7,(callback)=> {
+      wheel[1].style.transform = `rotate(${callback}deg)`;
     })
-    rotateFunction(wheelNum[2],3,(callback)=> {
-      console.log(callback,'333333콜백백')
-
+    rotateFunction(arrNum,3,(callback)=> {
+      wheel[2].style.transform = `rotate(${callback}deg)`;
     })
     // 콜백을 사용하려고 하면 함수 정의할때 콜백 매개변수를 추가하고,
     // 호출시 콜백 함수를 넘겨야 함
-    
+    this.classList.add('pointerNone')
+    del.classList.add('pointerNone')
+    wheel_stop.classList.remove('pointerNone')
   }) 
-    //  => {
-      // wheel[2].style.transform = `rotate(${callback}deg)`;
-    // })
-  //   rotateFunction(7,(callback) => {
-  //     wheel[1].style.transform = `rotate(${callback}deg)`;
-  //   })
-  //   rotateFunction(10,(callback) => {
-  //     wheel[0].style.transform = `rotate(${callback}deg)`;
-  //   })
-  //   this.classList.add('pointerNone')
-  //   del.classList.add('pointerNone')
-  //   wheel_stop.classList.remove('pointerNone')
 
 
+  function rotateFunction(arrNum,time,callback) {
+    let i = 0;
+    setTimeArr.push(
+      setInterval(() => {
+        i += 2;
+        if(i >= 360) {i=0};
+        callback(i)
+      }, time)
+    )
+  }
 
 
-  // wheel_stop.addEventListener('click',function(){
-  //   let wheel_3 = wheel[0].style.transform;
-  //   wheel_3 = wheel_3.split('(')[1].split('d')[0];
-  //   console.log(wheel_3)
-  //   clearInterval(rotateID);
+  let wheelList =  {
+    wheel_0 : 0,
+    wheel_1 : 0,
+    wheel_2 : 0,
+  };
 
-  //   if ((wheel_3 >= 0 && wheel_3 <= 35) || wheel_3 >= 326) {
-  //     console.log('첫 번째 영역: 용도바꾸기');
-  //   } else if (wheel_3 > 36 && wheel_3 <= 108) {
+  wheel_stop.addEventListener('click',function(){
+    for(i=0; i<=2; i++) {
+      wheelList[`wheel_${i}`] = wheel[`${i}`].style.transform;  
+      wheelList[`wheel_${i}`] = wheelList[`wheel_${i}`].split('(')[1].split('d')[0];
+      clearInterval(setTimeArr[`${i}`])
+      setTimeout(() => {
+        setTimeArr = [];
+      }, 5);
+    }
 
-  //     console.log('두 번째 영역: 확대축소');
-  //   } else if (wheel_3 > 109 && wheel_3 <= 175) {
+    if ((wheelList.wheel_2 >= 0 && wheelList.wheel_2 <= 35) || wheelList.wheel_2 >= 326) {
+      console.log('첫 번째 영역: 용도바꾸기');
+    } else if (wheelList.wheel_2 >= 36 && wheelList.wheel_2 <= 108) {
+      console.log('두 번째 영역: 확대축소');
+    } else if (wheelList.wheel_2 >= 109 && wheelList.wheel_2 <= 175) {
+      console.log('세 번째 영역: 빼기');
+    } else if (wheelList.wheel_2 >= 176 && wheelList.wheel_2 <= 250) {
+      console.log('네 번째 영역: 더하기');
+    } else if (wheelList.wheel_2 >= 251 && wheelList.wheel_2 > 325) {
+      console.log('다섯 번째 영역: 재료바꾸기');
+    }
+    console.log(wheelList)
 
-  //     console.log('세 번째 영역: 빼기');
-  //   } else if (wheel_3 > 176 && wheel_3 <= 250) {
-
-  //     console.log('네 번째 영역: 더하기');
-  //   } else if (wheel_3 > 251 && wheel_3 > 325) {
-
-  //     console.log('다섯 번째 영역: 재료바꾸기');
-  //   }
-  // })
-
+    wheel_turn.classList.remove('pointerNone')
+    del.classList.remove('pointerNone')
+    wheel_stop.classList.add('pointerNone')
+  });
 
 
     // 휴지통 클릭~~~
@@ -91,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
         e.value='';
       }
     })
-
 })
 
 
