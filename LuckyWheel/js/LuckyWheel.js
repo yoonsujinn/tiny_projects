@@ -5,18 +5,22 @@ document.addEventListener('DOMContentLoaded', function() {
   const input = document.querySelectorAll('input')
   const wheel_turn = document.querySelector('.wheel_turn')
   const wheel_stop = document.querySelector('.wheel_stop')
-  let arrNum;
   let setTimeArr = []
+  let wheelList =  {
+    wheel_0 : 0,
+    wheel_1 : 0,
+    wheel_2 : 0,
+  };
   
 
   wheel_turn.addEventListener('click',function() {
-    rotateFunction(arrNum,10,(callback)=> {
+    rotateFunction(10,(callback)=> {
       wheel[0].style.transform = `rotate(${callback}deg)`
     })
-    rotateFunction(arrNum,7,(callback)=> {
+    rotateFunction(20,(callback)=> {
       wheel[1].style.transform = `rotate(${callback}deg)`;
     })
-    rotateFunction(arrNum,3,(callback)=> {
+    rotateFunction(3,(callback)=> {
       wheel[2].style.transform = `rotate(${callback}deg)`;
     })
     // 콜백을 사용하려고 하면 함수 정의할때 콜백 매개변수를 추가하고,
@@ -27,8 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }) 
 
 
-  function rotateFunction(arrNum,time,callback) {
-    let i = 0;
+  function rotateFunction(time,callback) {
+    let i;
+    if(wheelList['wheel_0'] == 0) {
+      i=0;
+    }else {
+     console.log(wheelList,'wheelListwheelListwheelListwheelList')
+     console.log(setTimeArr,'setTimeArrsetTimeArrsetTimeArr')
+     if(wheelList)
+    }
     setTimeArr.push(
       setInterval(() => {
         i += 2;
@@ -39,11 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-  let wheelList =  {
-    wheel_0 : 0,
-    wheel_1 : 0,
-    wheel_2 : 0,
-  };
+
 
   wheel_stop.addEventListener('click',function(){
     for(i=0; i<=2; i++) {
@@ -55,18 +62,42 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 5);
     }
 
-    if ((wheelList.wheel_2 >= 0 && wheelList.wheel_2 <= 35) || wheelList.wheel_2 >= 326) {
-      console.log('첫 번째 영역: 용도바꾸기');
-    } else if (wheelList.wheel_2 >= 36 && wheelList.wheel_2 <= 108) {
-      console.log('두 번째 영역: 확대축소');
-    } else if (wheelList.wheel_2 >= 109 && wheelList.wheel_2 <= 175) {
-      console.log('세 번째 영역: 빼기');
-    } else if (wheelList.wheel_2 >= 176 && wheelList.wheel_2 <= 250) {
-      console.log('네 번째 영역: 더하기');
-    } else if (wheelList.wheel_2 >= 251 && wheelList.wheel_2 > 325) {
-      console.log('다섯 번째 영역: 재료바꾸기');
-    }
-    console.log(wheelList)
+    let sector_1 = [0,72,144,216,288]
+    let sector_2 = [0,36,72,108,144,180,216,252,288,326,324]
+
+    let w_0 = wheelList.wheel_0;
+    let w_1 = wheelList.wheel_1;
+    let w_2 = wheelList.wheel_2;
+
+    if ((w_2 >= 0 && w_2 <= 35) || w_2 >= 326) {wheel[2].style.transform = 'rotate(0deg)';}
+    else if (w_2 >= 36 && w_2 <= 108) {wheel[2].style.transform = 'rotate(72deg)';}
+    else if (w_2 >= 109 && w_2 <= 175) {wheel[2].style.transform = 'rotate(144deg)';}
+    else if (w_2 >= 176 && w_2 <= 250) {wheel[2].style.transform = 'rotate(216deg)';}
+    else if (w_2 >= 251 && w_2 < 325) {wheel[2].style.transform = 'rotate(288deg)';}
+
+    if ((w_1 >= 0 && w_1 <= 17) || w_1 >= 339) {wheel[1].style.transform = 'rotate(0deg)' 
+      console.log('111111',w_1);}
+    else if (w_1 >= 18 && w_1 <= 52) {wheel[1].style.transform = 'rotate(36deg)' 
+      console.log('222',w_1);}
+    else if (w_1 >= 53 && w_1 <= 88) {wheel[1].style.transform = 'rotate(72deg)' 
+      console.log('333',w_1);}
+    else if (w_1 >= 89 && w_1 <= 124) {wheel[1].style.transform = 'rotate(108deg)' 
+      console.log('444',w_1);}
+    else if (w_1 >= 125 && w_1 <= 159) {wheel[1].style.transform = 'rotate(144deg)' 
+      console.log('555',w_1);}
+    else if (w_1 >= 160 && w_1 <= 198) {wheel[1].style.transform = 'rotate(180deg)' 
+      console.log('666',w_1);}
+    else if (w_1 >= 199 && w_1 <= 132) {wheel[1].style.transform = 'rotate(216deg)' 
+      console.log('777',w_1);}
+    else if (w_1 >= 133 && w_1 <= 268) {wheel[1].style.transform = 'rotate(252deg)' 
+      console.log('888',w_1);}
+    else if (w_1 >= 269 && w_1 <= 303) {wheel[1].style.transform = 'rotate(255deg)' 
+      console.log('999',w_1);}
+    else if (w_1 >= 304 && w_1 < 338) {wheel[1].style.transform = 'rotate(326deg)' 
+      console.log('1010101',w_1);}
+    
+
+    
 
     wheel_turn.classList.remove('pointerNone')
     del.classList.remove('pointerNone')
