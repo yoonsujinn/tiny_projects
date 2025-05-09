@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
   let circle_2 = 'circle_2';
 
   wheel_turn.addEventListener('click',function() {
-    rotateFunction(10,circle_0,(callback)=> {
+    rotateFunction(40,circle_0,(callback)=> {
       wheel[0].style.transform = `rotate(${callback}deg)`
     })
-    rotateFunction(20,circle_1,(callback)=> {
+    rotateFunction(40,circle_1,(callback)=> {
       wheel[1].style.transform = `rotate(${callback}deg)`;
     })
-    rotateFunction(3,circle_2,(callback)=> {
+    rotateFunction(40,circle_2,(callback)=> {
       wheel[2].style.transform = `rotate(${callback}deg)`;
     })
     // 콜백을 사용하려고 하면 함수 정의할때 콜백 매개변수를 추가하고,
@@ -39,14 +39,18 @@ document.addEventListener('DOMContentLoaded', function() {
       if(wheelList['wheel_0'] == 0) {
         i=0;
       }else if(circle == 'circle_0') {
-        i=
-        console.log(wheelList.wheel_0)
+        console.log(circle)
+        log(wheelList.wheel_0)
+        i=wheelList.wheel_0
       }else if(circle == 'circle_1') {
-        console.log(wheelList.wheel_1)
+        console.log(circle)
+        log(wheelList.wheel_1)
+        i=wheelList.wheel_1
       }else if(circle == 'circle_2') {
-        console.log(wheelList.wheel_2)
+        console.log(circle)
+        log(wheelList.wheel_2)
+        i=wheelList.wheel_2
       }
-      
     },1);
 
   
@@ -55,7 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
         i += 2;
         if(i >= 360) {i=0};
         callback(i)
+        log('------------------')
       }, time)
+
     )
   }
 
