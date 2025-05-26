@@ -84,9 +84,10 @@
   width: 242px;
   height: 182px;
   pointer-events: none;
+  transform-origin: left center;
+  transform: rotate(362deg);
   background: url(../images/bigArrow.svg) center / contain no-repeat;
 }
-
 
 
 .sector {

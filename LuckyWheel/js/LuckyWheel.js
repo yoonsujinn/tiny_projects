@@ -11,18 +11,18 @@ document.addEventListener('DOMContentLoaded', function() {
     wheel_1 : 0,
     wheel_2 : 0,
   };
-  let circle_0 = 'circle_0'; //콜백 전달시 서클 번호 전달달
+  let circle_0 = 'circle_0'; //콜백 전달시 서클 번호 전달
   let circle_1 = 'circle_1';
   let circle_2 = 'circle_2';
 
   wheel_turn.addEventListener('click',function() {
-    rotateFunction(40,circle_0,(callback)=> {
+    rotateFunction(10,circle_0,(callback)=> {
       wheel[0].style.transform = `rotate(${callback}deg)`
     })
-    rotateFunction(40,circle_1,(callback)=> {
+    rotateFunction(7,circle_1,(callback)=> {
       wheel[1].style.transform = `rotate(${callback}deg)`;
     })
-    rotateFunction(40,circle_2,(callback)=> {
+    rotateFunction(3,circle_2,(callback)=> {
       wheel[2].style.transform = `rotate(${callback}deg)`;
     })
     // 콜백을 사용하려고 하면 함수 정의할때 콜백 매개변수를 추가하고,
@@ -38,28 +38,20 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
       if(wheelList['wheel_0'] == 0) {
         i=0;
-      }else if(circle == 'circle_0') {
-        console.log(circle)
-        log(wheelList.wheel_0)
+      }
+      else if(circle == 'circle_0') {
         i=wheelList.wheel_0
       }else if(circle == 'circle_1') {
-        console.log(circle)
-        log(wheelList.wheel_1)
         i=wheelList.wheel_1
       }else if(circle == 'circle_2') {
-        console.log(circle)
-        log(wheelList.wheel_2)
         i=wheelList.wheel_2
       }
     },1);
-
-  
     setTimeArr.push(
       setInterval(() => {
         i += 2;
         if(i >= 360) {i=0};
         callback(i)
-        log('------------------')
       }, time)
 
     )
@@ -72,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     for(i=0; i<=2; i++) {
       wheelList[`wheel_${i}`] = wheel[`${i}`].style.transform;  
       wheelList[`wheel_${i}`] = wheelList[`wheel_${i}`].split('(')[1].split('d')[0];
+      wheelList[`wheel_${i}`] = Number(wheelList[`wheel_${i}`]) 
       clearInterval(setTimeArr[`${i}`])
       setTimeout(() => {
         setTimeArr = [];
@@ -91,27 +84,26 @@ document.addEventListener('DOMContentLoaded', function() {
     else if (w_2 >= 176 && w_2 <= 250) {wheel[2].style.transform = 'rotate(216deg)';}
     else if (w_2 >= 251 && w_2 < 325) {wheel[2].style.transform = 'rotate(288deg)';}
 
-    // if ((w_1 >= 0 && w_1 <= 17) || w_1 >= 339) {wheel[1].style.transform = 'rotate(0deg)' 
-    //   console.log('111111',w_1);}
-    // else if (w_1 >= 18 && w_1 <= 52) {wheel[1].style.transform = 'rotate(36deg)' 
-    //   console.log('222',w_1);}
-    // else if (w_1 >= 53 && w_1 <= 88) {wheel[1].style.transform = 'rotate(72deg)' 
-    //   console.log('333',w_1);}
-    // else if (w_1 >= 89 && w_1 <= 124) {wheel[1].style.transform = 'rotate(108deg)' 
-    //   console.log('444',w_1);}
-    // else if (w_1 >= 125 && w_1 <= 159) {wheel[1].style.transform = 'rotate(144deg)' 
-    //   console.log('555',w_1);}
-    // else if (w_1 >= 160 && w_1 <= 198) {wheel[1].style.transform = 'rotate(180deg)' 
-    //   console.log('666',w_1);}
-    // else if (w_1 >= 199 && w_1 <= 132) {wheel[1].style.transform = 'rotate(216deg)' 
-    //   console.log('777',w_1);}
-    // else if (w_1 >= 133 && w_1 <= 268) {wheel[1].style.transform = 'rotate(252deg)' 
-    //   console.log('888',w_1);}
-    // else if (w_1 >= 269 && w_1 <= 303) {wheel[1].style.transform = 'rotate(255deg)' 
-    //   console.log('999',w_1);}
-    // else if (w_1 >= 304 && w_1 < 338) {wheel[1].style.transform = 'rotate(326deg)' 
-    //   console.log('1010101',w_1);}
-    
+    if ((w_1 >= 0 && w_1 <= 17) || w_1 >= 339) {wheel[1].style.transform = 'rotate(0deg)' }
+    else if (w_1 >= 18 && w_1 <= 52) {wheel[1].style.transform = 'rotate(36deg)' }
+    else if (w_1 >= 53 && w_1 <= 88) {wheel[1].style.transform = 'rotate(72deg)' }
+    else if (w_1 >= 89 && w_1 <= 124) {wheel[1].style.transform = 'rotate(108deg)' }
+    else if (w_1 >= 125 && w_1 <= 159) {wheel[1].style.transform = 'rotate(144deg)' }
+    else if (w_1 >= 160 && w_1 <= 198) {wheel[1].style.transform = 'rotate(180deg)' }
+    else if (w_1 >= 199 && w_1 <= 132) {wheel[1].style.transform = 'rotate(216deg)' }
+    else if (w_1 >= 133 && w_1 <= 268) {wheel[1].style.transform = 'rotate(252deg)' }
+    else if (w_1 >= 269 && w_1 <= 303) {wheel[1].style.transform = 'rotate(255deg)' }
+    else if (w_1 >= 304 && w_1 < 338) {wheel[1].style.transform = 'rotate(326deg)' }
+    if ((w_2 >= 0 && w_2 <= 17) || w_2 >= 339) {wheel[0].style.transform = 'rotate(0deg)' }
+    else if (w_2 >= 18 && w_2 <= 52) {wheel[0].style.transform = 'rotate(36deg)' }
+    else if (w_2 >= 53 && w_2 <= 88) {wheel[0].style.transform = 'rotate(72deg)' }
+    else if (w_2 >= 89 && w_2 <= 124) {wheel[0].style.transform = 'rotate(108deg)' }
+    else if (w_2 >= 125 && w_2 <= 159) {wheel[0].style.transform = 'rotate(144deg)' }
+    else if (w_2 >= 160 && w_2 <= 198) {wheel[0].style.transform = 'rotate(180deg)' }
+    else if (w_2 >= 199 && w_2 <= 132) {wheel[0].style.transform = 'rotate(216deg)' }
+    else if (w_2 >= 133 && w_2 <= 268) {wheel[0].style.transform = 'rotate(252deg)' }
+    else if (w_2 >= 269 && w_2 <= 303) {wheel[0].style.transform = 'rotate(255deg)' }
+    else if (w_2 >= 304 && w_2 < 338) {wheel[0].style.transform = 'rotate(326deg)' }
 
     
 
