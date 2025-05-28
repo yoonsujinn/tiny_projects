@@ -36,8 +36,8 @@ body {
 }
 
 .deco_1 {
-top: 85%;
-    left: 52%;
+  top: 85%;
+  left: 52%;
   background-image: url(../images/deco_1_2.svg);
 }
 
@@ -46,48 +46,58 @@ top: 85%;
   left: 63%;
   background-image: url(../images/deco_1_3.svg);
 }
+
 .deco_3 {
   top: 17%;
   left: 34%;
   background-image: url(../images/deco_1_4.svg);
 }
+
 .deco_4 {
   top: 17%;
   left: 34%;
   background-image: url(../images/deco_2_1.svg);
 }
+
 .deco_5 {
   top: 76%;
   left: 33%;
   background-image: url(../images/deco_2_2.svg);
 }
+
 .deco_6 {
   top: 52%;
   left: 30%;
   background-image: url(../images/deco_2_3.svg);
 }
+
 .deco_7 {
   top: 70%;
   left: 65%;
   background-image: url(../images/deco_2_4.svg);
 }
+
 .deco_8 {
   top: 13%;
   left: 56%;
   background-image: url(../images/deco_3_3.svg);
 }
+
 .deco_9 {
   top: 27%;
   left: 70%;
   background-image: url(../images/deco_4_1.svg);
 }
+
 .deco_10 {
   top: 36%;
   left: 32%;
   background-image: url(../images/deco_4_3.svg);
 }
 
-
+.machine {
+  position: relative;
+}
 
 .wrap {
   position: absolute;
@@ -96,5 +106,36 @@ top: 85%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #000;
+  border: 1px solid #f35f5f;
+  background: url(../images/젤리빈\ 기계와\ 파스텔\ 색상.png) center / contain no-repeat
+}
+
+.wrap .lottoHead {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  margin: 0 auto;
+  border: 1px solid #f35f5f;
+
+}
+
+.headEle {
+  background: #caffa6;
+}
+
+.wrap .lottoHead .headEle:nth-child(1) {
+  width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.wrap .ballWrap {
+  position: relative;
+  width: 300px;
+  aspect-ratio: 1/1;
+  margin: -50px auto 0;
+  border-radius: 50%;
+  border: 1px solid #f35f5f;
+
 }
