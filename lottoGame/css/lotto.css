@@ -23,7 +23,7 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
-  background: #fffcf5;
+  background: #ffffff;
 }
 
 .deco {
@@ -36,36 +36,58 @@ body {
 }
 
 .deco_1 {
-  top: 50%;
-  left: 50%;
-  background-image: url(../images/deco_1_1.svg);
+top: 85%;
+    left: 52%;
+  background-image: url(../images/deco_1_2.svg);
 }
 
 .deco_2 {
-  top: 50%;
-  left: 50%;
-  background-image: url(../images/deco_1_1.svg);
+  top: 30%;
+  left: 63%;
+  background-image: url(../images/deco_1_3.svg);
 }
-.deco_13 {
-  top: 50%;
-  left: 50%;
-  background-image: url(../images/deco_1_1.svg);
+.deco_3 {
+  top: 17%;
+  left: 34%;
+  background-image: url(../images/deco_1_4.svg);
 }
-.deco_1 {
-  top: 50%;
-  left: 50%;
-  background-image: url(../images/deco_1_1.svg);
+.deco_4 {
+  top: 17%;
+  left: 34%;
+  background-image: url(../images/deco_2_1.svg);
 }
-.deco_1 {
-  top: 50%;
-  left: 50%;
-  background-image: url(../images/deco_1_1.svg);
+.deco_5 {
+  top: 76%;
+  left: 33%;
+  background-image: url(../images/deco_2_2.svg);
 }
-.deco_1 {
-  top: 50%;
-  left: 50%;
-  background-image: url(../images/deco_1_1.svg);
+.deco_6 {
+  top: 52%;
+  left: 30%;
+  background-image: url(../images/deco_2_3.svg);
 }
+.deco_7 {
+  top: 70%;
+  left: 65%;
+  background-image: url(../images/deco_2_4.svg);
+}
+.deco_8 {
+  top: 13%;
+  left: 56%;
+  background-image: url(../images/deco_3_3.svg);
+}
+.deco_9 {
+  top: 27%;
+  left: 70%;
+  background-image: url(../images/deco_4_1.svg);
+}
+.deco_10 {
+  top: 36%;
+  left: 32%;
+  background-image: url(../images/deco_4_3.svg);
+}
+
+
 
 .wrap {
   position: absolute;
