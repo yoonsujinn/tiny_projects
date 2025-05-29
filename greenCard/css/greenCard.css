@@ -149,6 +149,7 @@ section {
     box-sizing: border-box;
     flex-direction: row;
     overflow: hidden;
+    min-width: 1400px
 }
 
 .sectionWrap {

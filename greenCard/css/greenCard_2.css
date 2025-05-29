@@ -265,9 +265,11 @@ table td {
 
 .listWrap summary {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 0 0 20px 0;
     gap: 20px;
+    cursor: pointer;
 }
 
 .listWrap details:last-child summary {

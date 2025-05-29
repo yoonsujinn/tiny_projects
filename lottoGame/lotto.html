@@ -6,29 +6,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./css/lotto.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-  <div class="deco deco_1"></div>
-  <div class="deco deco_2"></div>
-  <div class="deco deco_3"></div>
-  <div class="deco deco_4"></div>
-  <div class="deco deco_5"></div>
-  <div class="deco deco_6"></div>
-  <div class="deco deco_7"></div>
-  <div class="deco deco_8"></div>
-  <div class="deco deco_9"></div>
-  <div class="deco deco_10"></div>
   <div class="wrap">
-      <div class="lottoHead">
-      <div class="headEle"></div>
-      <div class="headEle"></div>
-      <div class="headEle"></div>
+    <div class="decoWrap">
+      <div class="deco deco_1"></div>
+      <div class="deco deco_2"></div>
+      <div class="deco deco_3"></div>
+      <div class="deco deco_4"></div>
+      <div class="deco deco_5"></div>
+      <div class="deco deco_6"></div>
+      <div class="deco deco_7"></div>
+      <div class="deco deco_8"></div>
+      <div class="deco deco_9"></div>
+      <div class="deco deco_10"></div>
     </div>
-    <div class="ballWrap"></div>
-    <div class="bottom"></div>
-  </div>
+    <div class="machineWrap">
+      <div class="lottoHead">
+        <div class="headEle"></div>
+        <div class="headEle"></div>
+        <div class="headEle"></div>
+      </div>
+      <div class="ballWrap">
+        <div class="ball red"></div>
+        <div class="ball blue"></div>
+        <div class="ball yellow"></div>
+        <div class="ball green"></div>
+        <div class="ball sky"></div>
+        <div class="ball yellow"></div>
+        <div class="ball green"></div>
+        <div class="ball blue"></div>
+        <div class="ball blue"></div>
+        <div class="ball yellow"></div>
+        <div class="ball green"></div>
+        <div class="ball sky"></div>
+        <div class="ball red"></div>
+        <div class="ball sky"></div>
+      </div>
+      <div class="bottom">
+        <div class="bottom_Head"></div>
+        <div class="bottom_Midd"></div>
+        <div class="bottom_Foot">
+          <div class="bottom_ballExit">
+            <div class="exitBall"></div>
+          </div>
+          <div class="bottom_button"></div>
+        </div>
+      </div>
+      <div class="resultWrap"></div>
+    </div>
 
+    <div class="result_Wrap ready">
+      <div class="bottom_button"></div>
+      <p>다이얼을 돌리세요!</p>
+      <!-- <div class=" ball red">50</div>
+      <div class=" ball blue">50</div>
+      <div class=" ball green">50</div>
+      <div class=" ball sky">50</div>
+      <div class=" ball yellow">50</div>
+      <div class=" ball ">50</div>
+      <div class=" ball plus"></div>
+      <div>50</div> -->
+    </div>
+
+  </div>
 </body>
 
 </html>
+<script>
+  const bottom_button = document.querySelector('.bottom_button');
+  const ball = document.querySelectorAll('.ballWrap .ball');
+  const result_Wrap = document.querySelector('.result_Wrap');
+  let x;
+  let y;
+  ball_min_X = 20;
+  ball_max_X = 313;
+  ball_min_Y = 25;
+  ball_max_Y = 202;
+  resultNumMax = 45;
+  resultNumMin = 1;
+
+  bottom_button.addEventListener('click', function () {
+    bottom_button.classList.add('on');
+    result_Wrap.classList.remove('ready');
+    
+    setInterval(() => {
+      ball.forEach(b => {
+        x = Math.random()*(ball_max_X - ball_min_X + 1 );
+        y = Math.random()*(ball_max_Y - ball_min_Y + 1 )
+        b.style.left = `${x}px`
+        b.style.bottom = `${y}px`
+      });
+    }, 1000);
+
+  })
+
+</script>
