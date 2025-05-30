@@ -101,8 +101,8 @@ setInterval(function () {
 }, 4000)
 
 function section3_motion() {
-  section3_headText.innerHTML = `${section3_case[caseNum-1].headText}`
-  section3_mainText.innerHTML = `${section3_case[caseNum-1].mainText}`
+  section3_headText.innerHTML = `${section3_case[caseNum - 1].headText}`
+  section3_mainText.innerHTML = `${section3_case[caseNum - 1].mainText}`
   section3_case.forEach((ele, idx) => {
     section_3.classList.remove(`on${idx + 1}`)
   });
@@ -153,11 +153,11 @@ window.addEventListener("wheel", function (event) {
     // console.log(scHeight,'화면높이');
     // console.log(scrollPosition,'현재높이');
     // console.log('-------------------------------')
-    if (scrollPosition == scHeight) {scrollToTopN(0) }
-    else if (scrollPosition == scHeight * 2) { scrollToTopN(1);}
-    else if (scrollPosition == scHeight * 3) { scrollToTopN(2);}
-    else if (scrollPosition == scHeight * 4) { scrollToTopN(3);}
-    else if (scrollPosition == scHeight * 5) { scrollToTopN(4);}
+    if (scrollPosition == scHeight) { scrollToTopN(0) }
+    else if (scrollPosition == scHeight * 2) { scrollToTopN(1); }
+    else if (scrollPosition == scHeight * 3) { scrollToTopN(2); }
+    else if (scrollPosition == scHeight * 4) { scrollToTopN(3); }
+    else if (scrollPosition == scHeight * 5) { scrollToTopN(4); }
     else if (scrollPosition > scHeight * 5) { scrollToTopN(5) }
   }
 }, { passive: false });
@@ -168,13 +168,13 @@ window.addEventListener("scroll", function (event) {
   let sectionIndex = document.querySelectorAll('section');
   for (let i = 1; i < sectionIndex.length; i++) {
     motions[i].end();
-    if (scrollPosition < scHeight) {motions[1].start();}
-    if (scrollPosition == scHeight){motions[2].start();}
-    if (scrollPosition == scHeight * 2){motions[3].start();}
-    if (scrollPosition == scHeight * 3){motions[4].start();}
-    if (scrollPosition == scHeight * 4){motions[5].start();}
-    if (scrollPosition == scHeight * 5){motions[6].start();}
-    if (scrollPosition > scHeight * 5 && scrollPosition < scHeight * 6){motions[7].start();}
+    if (scrollPosition < scHeight) { motions[1].start(); }
+    if (scrollPosition == scHeight) { motions[2].start(); }
+    if (scrollPosition == scHeight * 2) { motions[3].start(); }
+    if (scrollPosition == scHeight * 3) { motions[4].start(); }
+    if (scrollPosition == scHeight * 4) { motions[5].start(); }
+    if (scrollPosition == scHeight * 5) { motions[6].start(); }
+    if (scrollPosition > scHeight * 5 && scrollPosition < scHeight * 6) { motions[7].start(); }
   }
 });
 
@@ -185,6 +185,7 @@ window.addEventListener("scroll", function (event) {
 // ----------------------------------------------------------
 
 function page1_motion() {
+  section1_motion();
   document.querySelectorAll('.rightTitle').forEach((element, index) => {
     setTimeout(() => {
       element.classList.add('on');
@@ -208,6 +209,9 @@ function page1_motion_exit() {
   });
   document.querySelector('.section_1 em').classList.remove('on');
   document.querySelector('.section_1 .rightApp').classList.remove('on');
+  
+  clearInterval(section1_motion_set);
+  section1_motion_set = null;
 }
 
 
@@ -215,21 +219,25 @@ function page1_motion_exit() {
 // -------------------1페이지 함수!!!!!!!--------------------
 // ----------------------------------------------------------
 
-  //  - 캐릭터 4초에 한번씩 변경되는 스크립트 !---------------------------
-  let imgArrindex;
-  let imgArr1 = [
-    './images/bg-main-visual-bg-01.png',
-    './images/bg-main-visual-bg-02.png',
-    './images/bg-main-visual-bg-03.png',
-  ]
+//  - 캐릭터 4초에 한번씩 변경되는 스크립트 !---------------------------
+let section1_motion_set = null;
+let imgArrindex = 1;
+let imgArr1 = [
+  './images/bg-main-visual-bg-01.png',
+  './images/bg-main-visual-bg-02.png',
+  './images/bg-main-visual-bg-03.png',
+]
 
-  let section1_motion_1 = setInterval(function () {
-      leftMoveBg.classList.remove('leftMoveBg_1', 'leftMoveBg_2', 'leftMoveBg_3')
-      leftMoveBg.style.backgroundImage = `url(${imgArr1[imgArrindex]})`;
-      leftMoveBg.classList.add(`leftMoveBg_${imgArrindex + 1}`)
-      imgArrindex++;
-    if (imgArrindex > imgArr1.length) {imgArrindex = 0;}   
+function section1_motion() {
+  section1_motion_set = setInterval(function () {
+    leftMoveBg.classList.remove('leftMoveBg_1', 'leftMoveBg_2', 'leftMoveBg_3')
+    leftMoveBg.style.backgroundImage = `url(${imgArr1[imgArrindex - 1]})`;
+    leftMoveBg.classList.add(`leftMoveBg_${imgArrindex}`)
+    imgArrindex >= imgArr1.length ? imgArrindex = 1 : imgArrindex++;
   }, 1000)
+}
+
+
 
 
 
