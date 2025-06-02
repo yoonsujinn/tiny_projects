@@ -146,6 +146,11 @@ window.addEventListener('DOMContentLoaded', function () {
   let section1_motion_set;
   let imgArrindex = 1;
   var isRunning = false;
+  const imgArr1 = [
+    './images/bg-main-visual-bg-01.png',
+    './images/bg-main-visual-bg-02.png',
+    './images/bg-main-visual-bg-03.png',
+  ]
 
   function page1_motion() {
     document.querySelectorAll('.rightTitle').forEach((element, index) => {
@@ -165,11 +170,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   //  - 1페이지 캐릭터 4초에 한번씩 변경되는 스크립트 !---------------------------
-  const imgArr1 = [
-    './images/bg-main-visual-bg-01.png',
-    './images/bg-main-visual-bg-02.png',
-    './images/bg-main-visual-bg-03.png',
-  ]
+
   function page1_motion_set() {
     if (!isRunning) {
       intervalId_1 = setInterval(page1_motion_set_1, 1000);
@@ -237,10 +238,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   // ---------------------------------------------------------
-  // -------------------3페이지 시작작3!!!!!!!--------------------
+  // -------------------3페이지 시작!!!!!!!--------------------
   // ---------------------------------------------------------
-
-  // 2초에 한번씩 이미지 슬라이드!---------------------------
   const section3_case = [
     {
       headText: "환경을 위한 레벨업",
@@ -252,7 +251,7 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     {
       headText: "환경도 지키고, 혜택도 받고!",
-      mainText: "친환경 활동 및 소비만큼 혜택을 제공하는<br/>리워드 서비스 입니다."
+      mainText: "친환경 활동 및 소비만큼 혜택을 제공하 는<br/>리워드 서비스 입니다."
     }
   ]
   let section3_headText = document.querySelector('.section3_headText')
@@ -260,34 +259,33 @@ window.addEventListener('DOMContentLoaded', function () {
   let section3_ImgObjs = document.querySelectorAll('.section3_ImgObjs')
   let caseNum = 1;
 
-
-  setInterval(function () {
-    caseNum++;
-    if (caseNum <= section3_case.length) {
-      section3_motion()
-    } else if (caseNum > section3_case.length) {
-      caseNum = 1;
-      section3_motion()
-    }
-  }, 4000)
-
-  
-
-
-  function page3_motion() {
-    // console.log('3페이지 도착!~~!')
+    function page3_motion() {
     document.querySelector('.section3_headText').classList.add('on');
     document.querySelector('.section3_mainText').classList.add('on');
+    page3_motion_set()
+  }
+  function page3_motion_set() {
+    if (!isRunning) {
+      intervalId_3 = setInterval(page3_motion_set_1, 3000);
+      isRunning = true;
+      page3_motion_set_1()
+    }
+  }
+  function page3_motion_set_1() {
+    caseNum++;
+    console.log(caseNum, 'caseNumcaseNum')
+    if (caseNum <= section3_case.length) {
+      page3_motion_set_2()
+    } else if (caseNum > section3_case.length) {
+      caseNum = 1;
+      page3_motion_set_2()
+    }
   }
 
 
-      function page3_motion_set() {
-      if (!isRunning) {
-        intervalId_3 = setInterval(page1_motion_set_1, 1000);
-        isRunning = true;
-      }
-    }
-  function section3_motion() {
+
+
+  function page3_motion_set_2() {
     section3_headText.innerHTML = `${section3_case[caseNum - 1].headText}`
     section3_mainText.innerHTML = `${section3_case[caseNum - 1].mainText}`
     section3_case.forEach((ele, idx) => {
@@ -300,11 +298,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 
-  
+ // ---------------------------------------------------------
+  // -------------------3페이지 종료!!!!!!!--------------------
+  // ----------------------------------------------------------
   function page3_motion_exit() {
     // console.log('3페이지 나가기')
     document.querySelector('.section3_headText').classList.remove('on');
     document.querySelector('.section3_mainText').classList.remove('on');
+     clearInterval(intervalId_3);  // 반복 중단
+    isRunning = false;          // 상태값도 false로 되돌림
   }
 
 
