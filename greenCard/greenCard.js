@@ -40,6 +40,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   // 화면 처음 시작할때 실행되는 js
+  page1_motion();
+  page3_motion();
   scWidth = Math.floor(scWidth / 10) * 10;
   scHeight = Math.floor(scHeight / 10) * 10;
   window.addEventListener("resize", updateScreenSize)
@@ -50,29 +52,12 @@ window.addEventListener('DOMContentLoaded', function () {
     scWidth = Math.floor(scWidth / 10) * 10;
     scHeight = window.innerHeight;
     scHeight = Math.floor(scHeight / 10) * 10;
-    console.log('사이즈변경', scWidth, scHeight)
+    console.log('사이즈변경', scWidth, scHeight);
   }
 
-  page1_motion()
-
-  // 페이지5슬라이드-------------------------------------
-  setInterval(() => {
-    let sc5_slideWrapDiv = document.querySelector('.sc5_slideWrap')
-    let slideEle = document.querySelectorAll('.sc5_slideWrap [class*="sc5_"]')
-    let newDiv_1 = document.createElement('div')
-    // let newDiv = newDiv_1.cloneNode(true)
-    let delClass = slideEle[0].className;
-    // let delClassTxt = slideEle[0].innerHTML;
-
-    // sc5_slideWrapDiv.removeChild(slideEle[0])
-    // newDiv.classList.add(delClass)
-    // newDiv.innerHTML = delClassTxt;
-  }, 4000);
 
 
-
-
-
+ 
 
   // 화면 전체 스크롤
   window.addEventListener("wheel", function (event) {
@@ -139,20 +124,21 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
   // ----------------------------페이지마다 로딩될때 실행하는 JS----------------------------
-
   // ----------------------------------------------------------
   // -------------------1페이지 시작!!!!!!!--------------------
   // ----------------------------------------------------------
-  let section1_motion_set;
-  let imgArrindex = 1;
-  var isRunning = false;
+
+
+  var isRunning_1 = false;
   const imgArr1 = [
     './images/bg-main-visual-bg-01.png',
     './images/bg-main-visual-bg-02.png',
     './images/bg-main-visual-bg-03.png',
   ]
+  let imgArrindex = 1;
 
   function page1_motion() {
+    console.log('1페이지 시작')
     document.querySelectorAll('.rightTitle').forEach((element, index) => {
       setTimeout(() => {
         element.classList.add('on');
@@ -165,22 +151,22 @@ window.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
       document.querySelector('.section_1 .rightApp').classList.add('on');
     }, 1200);
-    page1_motion_set()
+    page1_motion_set();
   }
 
 
   //  - 1페이지 캐릭터 4초에 한번씩 변경되는 스크립트 !---------------------------
 
   function page1_motion_set() {
-    if (!isRunning) {
-      intervalId_1 = setInterval(page1_motion_set_1, 1000);
-      isRunning = true;
+    if (!isRunning_1) {
+      intervalId_1 = setInterval(page1_motion_set_1, 4000);
+      isRunning_1 = true;
     }
   }
   function page1_motion_set_1() {
-    leftMoveBg.classList.remove('leftMoveBg_1', 'leftMoveBg_2', 'leftMoveBg_3')
+    leftMoveBg.classList.remove('leftMoveBg_1', 'leftMoveBg_2', 'leftMoveBg_3');
     leftMoveBg.style.backgroundImage = `url(${imgArr1[imgArrindex - 1]})`;
-    leftMoveBg.classList.add(`leftMoveBg_${imgArrindex}`)
+    leftMoveBg.classList.add(`leftMoveBg_${imgArrindex}`);
     imgArrindex >= imgArr1.length ? imgArrindex = 1 : imgArrindex++;
   }
 
@@ -189,13 +175,14 @@ window.addEventListener('DOMContentLoaded', function () {
   // -------------------1페이지 종료!!!!!!!--------------------
   // ----------------------------------------------------------
   function page1_motion_exit() {
+
     document.querySelectorAll('.rightTitle').forEach((element, index) => {
       element.classList.remove('on');
     });
     document.querySelector('.section_1 em').classList.remove('on');
     document.querySelector('.section_1 .rightApp').classList.remove('on');
     clearInterval(intervalId_1);  // 반복 중단
-    isRunning = false;          // 상태값도 false로 되돌림
+    isRunning_1 = false;          // 상태값도 false로 되돌림
   }
 
 
@@ -240,6 +227,8 @@ window.addEventListener('DOMContentLoaded', function () {
   // ---------------------------------------------------------
   // -------------------3페이지 시작!!!!!!!--------------------
   // ---------------------------------------------------------
+
+
   const section3_case = [
     {
       headText: "환경을 위한 레벨업",
@@ -254,71 +243,74 @@ window.addEventListener('DOMContentLoaded', function () {
       mainText: "친환경 활동 및 소비만큼 혜택을 제공하 는<br/>리워드 서비스 입니다."
     }
   ]
-  let section3_headText = document.querySelector('.section3_headText')
-  let section3_mainText = document.querySelector('.section3_mainText')
-  let section3_ImgObjs = document.querySelectorAll('.section3_ImgObjs')
+  var isRunning_3 = false;
   let caseNum = 1;
-
-    function page3_motion() {
+  let section3_headText = document.querySelector('.section3_headText');
+  let section3_mainText = document.querySelector('.section3_mainText');
+  function page3_motion() {
     document.querySelector('.section3_headText').classList.add('on');
     document.querySelector('.section3_mainText').classList.add('on');
-    page3_motion_set()
+    setTimeout(() => { page3_motion_set(); }, 100);
   }
   function page3_motion_set() {
-    if (!isRunning) {
-      intervalId_3 = setInterval(page3_motion_set_1, 3000);
-      isRunning = true;
-      page3_motion_set_1()
+    if (!isRunning_3) {
+      intervalId_3 = setInterval(page3_motion_set_1, 4000);
+      isRunning_3 = true;
     }
   }
   function page3_motion_set_1() {
     caseNum++;
-    console.log(caseNum, 'caseNumcaseNum')
     if (caseNum <= section3_case.length) {
-      page3_motion_set_2()
+      setTimeout(() => {page3_motion_set_2()}, 100);
     } else if (caseNum > section3_case.length) {
       caseNum = 1;
-      page3_motion_set_2()
+      setTimeout(() => {page3_motion_set_2()}, 100);
     }
   }
-
-
-
 
   function page3_motion_set_2() {
     section3_headText.innerHTML = `${section3_case[caseNum - 1].headText}`
     section3_mainText.innerHTML = `${section3_case[caseNum - 1].mainText}`
-    section3_case.forEach((ele, idx) => {
-      section_3.classList.remove(`on${idx + 1}`)
-    });
-    setTimeout(() => {
-      section_3.classList.add(`on${caseNum}`)
-    }, 20);
+    section3_case.forEach((ele, idx) => {section_3.classList.remove(`on${idx + 1}`)});
+    setTimeout(() => {section_3.classList.add(`on${caseNum}`)}, 20);
   }
 
 
-
- // ---------------------------------------------------------
+  // ---------------------------------------------------------
   // -------------------3페이지 종료!!!!!!!--------------------
   // ----------------------------------------------------------
   function page3_motion_exit() {
-    // console.log('3페이지 나가기')
     document.querySelector('.section3_headText').classList.remove('on');
     document.querySelector('.section3_mainText').classList.remove('on');
-     clearInterval(intervalId_3);  // 반복 중단
-    isRunning = false;          // 상태값도 false로 되돌림
+    clearInterval(intervalId_3);  // 반복 중단
+    isRunning_3 = false;          // 상태값도 false로 되돌림
   }
-
 
   function page4_motion() {
     // console.log('4페이지 도착!~~!')
   }
+    // ---------------------------------------------------------
+  // -------------------4페이지 종료!!!!!!!--------------------
+  // ----------------------------------------------------------
   function page4_motion_exit() {
     // console.log('4페이지 나가기')
   }
   function page5_motion() {
     // console.log('5페이지 도착!~~!')
   }
+   // 페이지5슬라이드-------------------------------------
+  setInterval(() => {
+    let sc5_slideWrapDiv = document.querySelector('.sc5_slideWrap');
+    let slideEle = document.querySelectorAll('.sc5_slideWrap [class*="sc5_"]');
+    let newDiv_1 = document.createElement('div');
+    // let newDiv = newDiv_1.cloneNode(true)
+    let delClass = slideEle[0].className;
+    // let delClassTxt = slideEle[0].innerHTML;
+    // sc5_slideWrapDiv.removeChild(slideEle[0])
+    // newDiv.classList.add(delClass)
+    // newDiv.innerHTML = delClassTxt;
+  }, 4000);
+
   function page5_motion_exit() {
     // console.log('5페이지 나가기')
   }
