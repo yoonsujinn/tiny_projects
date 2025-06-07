@@ -1072,15 +1072,21 @@ section.section_1 .leftImg {
   flex-direction: column;
   justify-content: center;
   position: relative;
+  transform: translate(0,50px);
+  visibility: hidden;
   width: 213px;
   height: 300px;
   border-radius: 30px;
-  text-align: center;
   border: 2px solid #e6dfdf;
-
-  &:nth-child(even) {
+  text-align: center;
+  transition: 0.4s;
+}
+.pointSave:nth-child(even) {
     top: 30px;
   }
+.pointSave.on {
+  transform: translate(0px,0px);
+  visibility: visible;
 }
 
 

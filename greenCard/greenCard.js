@@ -6,6 +6,8 @@ window.addEventListener('DOMContentLoaded', function () {
   let scWidth = Math.round(window.innerWidth);
   let scHeight = Math.round(window.innerHeight);
   let section_3 = document.querySelector('.section_3');
+  let pointSave = document.querySelectorAll('.pointSave');
+
 
   const motions = {
     1: {
@@ -41,7 +43,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // 화면 처음 시작할때 실행되는 js
   page1_motion();
+  page2_motion();
   page3_motion();
+  page4_motion();
   scWidth = Math.floor(scWidth / 10) * 10;
   scHeight = Math.floor(scHeight / 10) * 10;
   window.addEventListener("resize", updateScreenSize)
@@ -138,7 +142,6 @@ window.addEventListener('DOMContentLoaded', function () {
   let imgArrindex = 1;
 
   function page1_motion() {
-    console.log('1페이지 시작')
     document.querySelectorAll('.rightTitle').forEach((element, index) => {
       setTimeout(() => {
         element.classList.add('on');
@@ -240,10 +243,11 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     {
       headText: "환경도 지키고, 혜택도 받고!",
-      mainText: "친환경 활동 및 소비만큼 혜택을 제공하 는<br/>리워드 서비스 입니다."
+      mainText: "친환경 활동 및 소비만큼 혜택을 제공하는<br/>리워드 서비스 입니다."
     }
   ]
   var isRunning_3 = false;
+  
   let caseNum = 1;
   let section3_headText = document.querySelector('.section3_headText');
   let section3_mainText = document.querySelector('.section3_mainText');
@@ -285,15 +289,22 @@ window.addEventListener('DOMContentLoaded', function () {
     clearInterval(intervalId_3);  // 반복 중단
     isRunning_3 = false;          // 상태값도 false로 되돌림
   }
-
+    // ---------------------------------------------------------
+  // -------------------4페이지 시작작!!!!!!!--------------------
+  // ----------------------------------------------------------
   function page4_motion() {
-    // console.log('4페이지 도착!~~!')
+    pointSave.forEach(ele => {
+      ele.classList.add('on')
+    });
   }
     // ---------------------------------------------------------
   // -------------------4페이지 종료!!!!!!!--------------------
   // ----------------------------------------------------------
   function page4_motion_exit() {
-    // console.log('4페이지 나가기')
+    pointSave.forEach(ele => {
+      ele.classList.remove('on')
+    });
+
   }
   function page5_motion() {
     // console.log('5페이지 도착!~~!')
