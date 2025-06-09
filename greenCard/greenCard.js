@@ -10,31 +10,31 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   const motions = {
-    1: {
+    0: {
       start: page1_motion,
       end: page1_motion_exit,
     },
-    2: {
+    1: {
       start: page2_motion,
       end: page2_motion_exit,
     },
-    3: {
+    2: {
       start: page3_motion,
       end: page3_motion_exit,
     },
-    4: {
+    3: {
       start: page4_motion,
       end: page4_motion_exit,
     },
-    5: {
+    4: {
       start: page5_motion,
       end: page5_motion_exit,
     },
-    6: {
+    5: {
       start: page6_motion,
       end: page6_motion_exit,
     },
-    7: {
+    6: {
       start: page7_motion,
       end: page7_motion_exit,
     }
@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 
- 
+
 
   // 화면 전체 스크롤
   window.addEventListener("wheel", function (event) {
@@ -115,14 +115,14 @@ window.addEventListener('DOMContentLoaded', function () {
   window.addEventListener("scroll", function (event) {
     let scrollPosition = window.scrollY; // 스크롤 현재 위치 확인
     let sectionIndex = document.querySelectorAll('section');
-    for (let i = 1; i < sectionIndex.length; i++) {
+    for (let i = 0; i < sectionIndex.length; i++) {
       motions[i].end();
-      if (scrollPosition < scHeight) { motions[1].start(); }
-      if (scrollPosition == scHeight) { motions[2].start(); }
-      if (scrollPosition == scHeight * 2) { motions[3].start(); }
-      if (scrollPosition == scHeight * 3) { motions[4].start(); }
-      if (scrollPosition == scHeight * 4) { motions[5].start(); }
-      if (scrollPosition == scHeight * 5) { motions[6].start(); }
+      if (scrollPosition < scHeight) { motions[0].start(); }
+      if (scrollPosition == scHeight) { motions[1].start(); }
+      if (scrollPosition == scHeight * 2) { motions[2].start(); }
+      if (scrollPosition == scHeight * 3) { motions[3].start(); }
+      if (scrollPosition == scHeight * 4) { motions[4].start(); }
+      if (scrollPosition == scHeight * 5) { motions[5].start(); }
       if (scrollPosition > scHeight * 5 && scrollPosition < scHeight * 6) { motions[7].start(); }
     }
   });
@@ -247,7 +247,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   ]
   var isRunning_3 = false;
-  
+  let intervalId_3;
   let caseNum = 1;
   let section3_headText = document.querySelector('.section3_headText');
   let section3_mainText = document.querySelector('.section3_mainText');
@@ -265,18 +265,18 @@ window.addEventListener('DOMContentLoaded', function () {
   function page3_motion_set_1() {
     caseNum++;
     if (caseNum <= section3_case.length) {
-      setTimeout(() => {page3_motion_set_2()}, 100);
+      setTimeout(() => { page3_motion_set_2() }, 100);
     } else if (caseNum > section3_case.length) {
       caseNum = 1;
-      setTimeout(() => {page3_motion_set_2()}, 100);
+      setTimeout(() => { page3_motion_set_2() }, 100);
     }
   }
 
   function page3_motion_set_2() {
     section3_headText.innerHTML = `${section3_case[caseNum - 1].headText}`
     section3_mainText.innerHTML = `${section3_case[caseNum - 1].mainText}`
-    section3_case.forEach((ele, idx) => {section_3.classList.remove(`on${idx + 1}`)});
-    setTimeout(() => {section_3.classList.add(`on${caseNum}`)}, 20);
+    section3_case.forEach((ele, idx) => { section_3.classList.remove(`on${idx + 1}`) });
+    setTimeout(() => { section_3.classList.add(`on${caseNum}`) }, 20);
   }
 
 
@@ -289,27 +289,57 @@ window.addEventListener('DOMContentLoaded', function () {
     clearInterval(intervalId_3);  // 반복 중단
     isRunning_3 = false;          // 상태값도 false로 되돌림
   }
-    // ---------------------------------------------------------
-  // -------------------4페이지 시작작!!!!!!!--------------------
+  // ---------------------------------------------------------
+  // -------------------4페이지 시작!!!!!!!--------------------
   // ----------------------------------------------------------
   function page4_motion() {
+    let page4_time = 0;
+    console.log(page4_time, 'page4_timepage4_timepage4_time')
     pointSave.forEach(ele => {
-      ele.classList.add('on')
+      page4_time = page4_time + 50;
+      setTimeout(() => {
+        ele.classList.add('on')
+      }, page4_time);
     });
   }
-    // ---------------------------------------------------------
+
+  // 4페이지 탭 기능
+  let section4_headEle = document.querySelectorAll(".section4_head li")
+  let section4_body = document.querySelectorAll(".section4_body")
+  section4_headEle.forEach((ele, idx) => {
+    ele.addEventListener('click', function (e) {
+      section4_headEle.forEach(e => { e.classList.remove('on'); });
+      section4_body.forEach(e => {
+        e.classList.remove('on');
+        section4_body[idx].style.transform = "scaleX(0)";
+
+      });
+      ele.classList.add('on');
+      section4_body[idx].classList.add('on');
+      setInterval(() => {
+        section4_body[idx].style.transform = "scaleX(1)";
+      }, 100);
+    });
+  });
+
+
+  // ---------------------------------------------------------
   // -------------------4페이지 종료!!!!!!!--------------------
   // ----------------------------------------------------------
   function page4_motion_exit() {
     pointSave.forEach(ele => {
       ele.classList.remove('on')
     });
-
   }
+
+
+  // ---------------------------------------------------------
+  // -------------------5페이지 시작!!!!!!!--------------------
+  // ----------------------------------------------------------
   function page5_motion() {
     // console.log('5페이지 도착!~~!')
   }
-   // 페이지5슬라이드-------------------------------------
+  // 페이지5슬라이드-------------------------------------
   setInterval(() => {
     let sc5_slideWrapDiv = document.querySelector('.sc5_slideWrap');
     let slideEle = document.querySelectorAll('.sc5_slideWrap [class*="sc5_"]');
@@ -322,18 +352,41 @@ window.addEventListener('DOMContentLoaded', function () {
     // newDiv.innerHTML = delClassTxt;
   }, 4000);
 
+  // ---------------------------------------------------------
+  // -------------------5페이지 종료!!!!!!!--------------------
+  // ----------------------------------------------------------
   function page5_motion_exit() {
     // console.log('5페이지 나가기')
   }
+
+  // ---------------------------------------------------------
+  // -------------------6페이지 시작!!!!!!!--------------------
+  // ----------------------------------------------------------
+
+  let pg6_bigLogos = document.querySelector('.biglogos');
+  let pg6_smallLogos = document.querySelector('.smallLogos');
+  let pg6_h3 = document.querySelector('.section6 h3');
+  let page6_eleArr = [pg6_bigLogos,pg6_smallLogos,pg6_h3]
+  console.log(page6_eleArr)
+
   function page6_motion() {
-    // console.log('6페이지 도착!~~!')
+    // [pg6_bigLogos, pg6_smallLogos, pg6_h3].forEach(el => {
+      // el.classList.add('on');
+    // });
   }
+
+  // ---------------------------------------------------------
+  // -------------------6페이지 종료!!!!!!!--------------------
+  // ----------------------------------------------------------
   function page6_motion_exit() {
-    // console.log('6페이지 나가기')
+
+    // [pg6_bigLogos, pg6_smallLogos, pg6_h3].forEach(el => {
+      // el.classList.remove('on');
+    // });
   }
 
   function page7_motion() {
-    // console.log('푸터터도착!~~!')
+    console.log('푸터터도착!~~!')
   }
 
   function page7_motion_exit() {

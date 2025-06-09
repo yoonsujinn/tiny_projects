@@ -1057,13 +1057,16 @@ section.section_1 .leftImg {
 
 .section4_body {
   display: none;
+  gap: 20px;
   width: 100%;
   margin: 179px 0 0 0;
-  gap: 20px;
+  transition: 0.5s;
+  transform: scaleX(0);
 }
 
 .section4_body.on {
   display: flex;
+
 }
 
 .pointSave {
@@ -1072,20 +1075,22 @@ section.section_1 .leftImg {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  transform: translate(0,50px);
+  transform: translate(0, 80px);
   visibility: hidden;
   width: 213px;
   height: 300px;
   border-radius: 30px;
   border: 2px solid #e6dfdf;
   text-align: center;
-  transition: 0.4s;
+  transition: 0.6s;
 }
+
 .pointSave:nth-child(even) {
-    top: 30px;
-  }
+  top: 30px;
+}
+
 .pointSave.on {
-  transform: translate(0px,0px);
+  transform: translate(0px, 0px);
   visibility: visible;
 }
 
@@ -1230,6 +1235,31 @@ section.section_1 .leftImg {
   margin: -110px 0 0 0;
 }
 
+.section6 h3 {
+  transform: translateY(40px);
+}
+
+.biglogos {
+  transform: translateY(60px);
+}
+
+.smallLogos {
+  transform: translateY(80px);
+}
+
+.section6 h3,
+.biglogos,
+.smallLogos {
+  transition: 0.5s;
+}
+
+.section6 h3.on,
+.biglogos.on,
+.smallLogos.on {
+  transform: translateY(0);
+}
+
+
 .biglogos .biglogo {
   width: 116px;
   border: 1px solid #dcdbdb;
@@ -1277,6 +1307,7 @@ section.section_1 .leftImg {
   font-size: 13px;
   color: #333;
 }
+
 .smallLogos .smallLogo img {
   width: 35px;
 }
