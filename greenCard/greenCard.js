@@ -42,10 +42,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   // 화면 처음 시작할때 실행되는 js
-  page1_motion();
-  page2_motion();
-  page3_motion();
-  page4_motion();
+
   scWidth = Math.floor(scWidth / 10) * 10;
   scHeight = Math.floor(scHeight / 10) * 10;
   window.addEventListener("resize", updateScreenSize)
@@ -90,7 +87,7 @@ window.addEventListener('DOMContentLoaded', function () {
         });
       }, 50);
     }
-    if (scrollXY > 0) { //내려갈때
+    if (scrollXY > 0) { //스크롤 내리는 기능이버섯
       event.preventDefault();
       if (scrollPosition < scHeight) { scrollToBottomN(1) }
       else if (scrollPosition == scHeight) { scrollToBottomN(2) }
@@ -98,7 +95,7 @@ window.addEventListener('DOMContentLoaded', function () {
       else if (scrollPosition == scHeight * 3) { scrollToBottomN(4) }
       else if (scrollPosition == scHeight * 4) { scrollToBottomN(5) }
       else if (scrollPosition > scHeight * 4.1) { scrollToBottomN(6) }
-    } else if (scrollXY < 50) { //올라갈때
+    } else if (scrollXY < 50) { //스크롤 올리는 기능이버섯
       // console.log(scHeight,'화면높이');
       // console.log(scrollPosition,'현재높이');
       // console.log('-------------------------------')
@@ -123,7 +120,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (scrollPosition == scHeight * 3) { motions[3].start(); }
       if (scrollPosition == scHeight * 4) { motions[4].start(); }
       if (scrollPosition == scHeight * 5) { motions[5].start(); }
-      if (scrollPosition > scHeight * 5 && scrollPosition < scHeight * 6) { motions[7].start(); }
+      if (scrollPosition >= scHeight * 6) { motions[6].start(); }
     }
   });
 
@@ -133,12 +130,13 @@ window.addEventListener('DOMContentLoaded', function () {
   // ----------------------------------------------------------
 
 
-  var isRunning_1 = false;
+
   const imgArr1 = [
     './images/bg-main-visual-bg-01.png',
     './images/bg-main-visual-bg-02.png',
     './images/bg-main-visual-bg-03.png',
   ]
+  var isRunning_1 = false;
   let imgArrindex = 1;
 
   function page1_motion() {
@@ -157,10 +155,7 @@ window.addEventListener('DOMContentLoaded', function () {
     page1_motion_set();
   }
 
-
-  //  - 1페이지 캐릭터 4초에 한번씩 변경되는 스크립트 !---------------------------
-
-  function page1_motion_set() {
+  function page1_motion_set() {//-1페이지 캐릭터 4초에 한번씩 변경되는 스크립트 !----
     if (!isRunning_1) {
       intervalId_1 = setInterval(page1_motion_set_1, 4000);
       isRunning_1 = true;
@@ -189,6 +184,9 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
 
+
+
+  page1_motion();
 
 
   // ---------------------------------------------------------
@@ -225,7 +223,7 @@ window.addEventListener('DOMContentLoaded', function () {
     document.querySelector('.cardIntroWrap:nth-child(2)').classList.remove('on');
     document.querySelector('.cardIntroWrap:nth-child(3)').classList.remove('on');
   }
-
+  page2_motion();
 
   // ---------------------------------------------------------
   // -------------------3페이지 시작!!!!!!!--------------------
@@ -254,7 +252,7 @@ window.addEventListener('DOMContentLoaded', function () {
   function page3_motion() {
     document.querySelector('.section3_headText').classList.add('on');
     document.querySelector('.section3_mainText').classList.add('on');
-    setTimeout(() => { page3_motion_set(); }, 100);
+    page3_motion_set();
   }
   function page3_motion_set() {
     if (!isRunning_3) {
@@ -264,20 +262,15 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function page3_motion_set_1() {
     caseNum++;
-    if (caseNum <= section3_case.length) {
-      setTimeout(() => { page3_motion_set_2() }, 100);
-    } else if (caseNum > section3_case.length) {
-      caseNum = 1;
-      setTimeout(() => { page3_motion_set_2() }, 100);
-    }
+    if (caseNum > section3_case.length) { caseNum = 1; }
+    setTimeout(() => {
+      section3_headText.innerHTML = `${section3_case[caseNum - 1].headText}`
+      section3_mainText.innerHTML = `${section3_case[caseNum - 1].mainText}`
+      section3_case.forEach((ele, idx) => { section_3.classList.remove(`on${idx + 1}`) });
+      setTimeout(() => { section_3.classList.add(`on${caseNum}`) }, 20);
+    }, 100);
   }
 
-  function page3_motion_set_2() {
-    section3_headText.innerHTML = `${section3_case[caseNum - 1].headText}`
-    section3_mainText.innerHTML = `${section3_case[caseNum - 1].mainText}`
-    section3_case.forEach((ele, idx) => { section_3.classList.remove(`on${idx + 1}`) });
-    setTimeout(() => { section_3.classList.add(`on${caseNum}`) }, 20);
-  }
 
 
   // ---------------------------------------------------------
@@ -289,12 +282,16 @@ window.addEventListener('DOMContentLoaded', function () {
     clearInterval(intervalId_3);  // 반복 중단
     isRunning_3 = false;          // 상태값도 false로 되돌림
   }
+
+  page3_motion();
+
+
+
   // ---------------------------------------------------------
   // -------------------4페이지 시작!!!!!!!--------------------
   // ----------------------------------------------------------
   function page4_motion() {
     let page4_time = 0;
-    console.log(page4_time, 'page4_timepage4_timepage4_time')
     pointSave.forEach(ele => {
       page4_time = page4_time + 50;
       setTimeout(() => {
@@ -332,58 +329,80 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  page4_motion();
+
+
 
   // ---------------------------------------------------------
-  // -------------------5페이지 시작!!!!!!!--------------------
-  // ----------------------------------------------------------
+  // -------------------5페이지 동작!!!!!!!-------------------
+  // ---------------------------------------------------------
+  let sc5_slideWrap = document.querySelector('.sc5_slideWrap')
+  let sc5_card = document.querySelectorAll('.sc5_slideWrap [class*="sc5_"]')
+  let leftPosition = ["-50%", "0%", "50%", "100%"]
   function page5_motion() {
-    // console.log('5페이지 도착!~~!')
+    document.querySelector('.section5_left p').classList.add('on');
+    setTimeout(() => {
+      document.querySelector('.section5_left b').classList.add('on');
+    }, 200);
+    setTimeout(() => {
+      document.querySelector('.section5_left strong').classList.add('on');
+    }, 500);
+    console.log(sc5_card)
+
+    // setTimeout(() => {
+    //   // let firstEle = sc5_card[0].cloneNode(true);
+    //  sc5_card.forEach(ele => {
+    //     ele.style.left = "-50%";
+    //   });
+    // }, 2000);
+
   }
-  // 페이지5슬라이드-------------------------------------
-  setInterval(() => {
-    let sc5_slideWrapDiv = document.querySelector('.sc5_slideWrap');
-    let slideEle = document.querySelectorAll('.sc5_slideWrap [class*="sc5_"]');
-    let newDiv_1 = document.createElement('div');
-    // let newDiv = newDiv_1.cloneNode(true)
-    let delClass = slideEle[0].className;
-    // let delClassTxt = slideEle[0].innerHTML;
-    // sc5_slideWrapDiv.removeChild(slideEle[0])
-    // newDiv.classList.add(delClass)
-    // newDiv.innerHTML = delClassTxt;
-  }, 4000);
+
+
 
   // ---------------------------------------------------------
   // -------------------5페이지 종료!!!!!!!--------------------
   // ----------------------------------------------------------
   function page5_motion_exit() {
-    // console.log('5페이지 나가기')
+    document.querySelector('.section5_left p').classList.remove('on');
+    document.querySelector('.section5_left b').classList.remove('on');
+    document.querySelector('.section5_left strong').classList.remove('on');
   }
+  page5_motion();
+
 
   // ---------------------------------------------------------
   // -------------------6페이지 시작!!!!!!!--------------------
   // ----------------------------------------------------------
+  let smallLogos = document.querySelector('.smallLogos')
+  let smallLogosWrap = document.querySelector('.smallLogosWrap')
+  let cloneWrap = smallLogosWrap.cloneNode(true);
+  smallLogos.appendChild(cloneWrap);
 
-  let pg6_bigLogos = document.querySelector('.biglogos');
-  let pg6_smallLogos = document.querySelector('.smallLogos');
-  let pg6_h3 = document.querySelector('.section6 h3');
-  let page6_eleArr = [pg6_bigLogos,pg6_smallLogos,pg6_h3]
-  console.log(page6_eleArr)
 
   function page6_motion() {
-    // [pg6_bigLogos, pg6_smallLogos, pg6_h3].forEach(el => {
-      // el.classList.add('on');
-    // });
+    smallLogosWrap.classList.add('ani');
+    cloneWrap.classList.add('ani');
+    smallLogosWrap.addEventListener('animationend', function () {
+      smallLogosWrap.classList.remove('ani');
+      cloneWrap.classList.remove('ani');
+      setTimeout(() => {
+        smallLogosWrap.classList.add('ani');
+        cloneWrap.classList.add('ani');
+      }, 10)
+    })
+
   }
+
+
 
   // ---------------------------------------------------------
   // -------------------6페이지 종료!!!!!!!--------------------
   // ----------------------------------------------------------
   function page6_motion_exit() {
 
-    // [pg6_bigLogos, pg6_smallLogos, pg6_h3].forEach(el => {
-      // el.classList.remove('on');
-    // });
   }
+  page6_motion();
 
   function page7_motion() {
     console.log('푸터터도착!~~!')
@@ -394,3 +413,4 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
 })
+
