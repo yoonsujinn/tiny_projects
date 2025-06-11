@@ -249,6 +249,7 @@ window.addEventListener('DOMContentLoaded', function () {
   let caseNum = 1;
   let section3_headText = document.querySelector('.section3_headText');
   let section3_mainText = document.querySelector('.section3_mainText');
+  
   function page3_motion() {
     document.querySelector('.section3_headText').classList.add('on');
     document.querySelector('.section3_mainText').classList.add('on');
@@ -336,10 +337,38 @@ window.addEventListener('DOMContentLoaded', function () {
   // ---------------------------------------------------------
   // -------------------5페이지 동작!!!!!!!-------------------
   // ---------------------------------------------------------
-  let sc5_slideWrap = document.querySelector('.sc5_slideWrap')
-  let sc5_card = document.querySelectorAll('.sc5_slideWrap [class*="sc5_"]')
-  let leftPosition = ["-50%", "0%", "50%", "100%"]
+  let sc5CardText = [
+    {
+      backImg: "url(./images/icon/icon-main-section04-1.png)",
+      cardText: "공공시설<br />무료 할인 혜택"
+    },
+    {
+      backImg: "url(./images/icon/icon-main-section04-2.png)",
+      cardText: "포인트 적립 가능한<br />친환경 제품<br />안내"
+    },
+    {
+      backImg: "url(./images/icon/icon-main-section04-3.png)",
+      cardText: "에너지 절약 시<br />인센티브 안내"
+    },
+  ]
+
+  // 페이지5슬라이드 초기설정
+  let cardWrap = document.querySelector('.sc5_slideWrap .cardWrap');
+  let sc5_card = document.querySelectorAll('.sc5_card');
+  let slideTrans = 0;
+  for (let i = 0; i <= sc5CardText.length - 1; i++) {
+    sc5_card[i].style.backgroundImage = `${sc5CardText[i].backImg}`;
+    sc5_card[i].innerHTML = `${sc5CardText[i].cardText}`
+  }
+
   function page5_motion() {
+    setInterval(() => {
+      let firstEle = sc5_card[0].cloneNode(true);
+      slideTrans =-50;
+      cardWrap.style.transform = `translateX(-${slideTrans}%)`;
+    }, 2000);
+
+
     document.querySelector('.section5_left p').classList.add('on');
     setTimeout(() => {
       document.querySelector('.section5_left b').classList.add('on');
@@ -347,14 +376,8 @@ window.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
       document.querySelector('.section5_left strong').classList.add('on');
     }, 500);
-    console.log(sc5_card)
 
-    // setTimeout(() => {
-    //   // let firstEle = sc5_card[0].cloneNode(true);
-    //  sc5_card.forEach(ele => {
-    //     ele.style.left = "-50%";
-    //   });
-    // }, 2000);
+
 
   }
 
@@ -383,15 +406,6 @@ window.addEventListener('DOMContentLoaded', function () {
   function page6_motion() {
     smallLogosWrap.classList.add('ani');
     cloneWrap.classList.add('ani');
-    smallLogosWrap.addEventListener('animationend', function () {
-      smallLogosWrap.classList.remove('ani');
-      cloneWrap.classList.remove('ani');
-      setTimeout(() => {
-        smallLogosWrap.classList.add('ani');
-        cloneWrap.classList.add('ani');
-      }, 10)
-    })
-
   }
 
 
