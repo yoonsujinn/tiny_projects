@@ -469,8 +469,8 @@ section.section_1 .leftImg {
 }
 
 .section2_right .cardIntroImg {
-  width: 119px;
-  height: 190px;
+  width: 159px;
+  height: 246px;
 }
 
 .section2_right .cardIntroWrap:nth-child(1) .cardIntroImg {
@@ -1031,20 +1031,24 @@ section.section_1 .leftImg {
   }
 }
 
-
+.section_4_wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .section4_head {
   display: flex;
-  position: relative;
-  top: 138px;
+  /* position: relative; */
+  /* top: 138px; */
   left: 6px;
-  font-size: 18px;
+  font-size: 21px;
   gap: 20px;
 }
 
 .section4_head li {
   cursor: pointer;
-  width: 100px;
+  width: 120px;
   text-align: center;
 }
 
@@ -1057,7 +1061,7 @@ section.section_1 .leftImg {
   display: none;
   gap: 20px;
   width: 100%;
-  margin: 179px 0 0 0;
+  margin: 30px 0 0 0;
   transition: 0.5s;
   transform: scaleX(0);
 }

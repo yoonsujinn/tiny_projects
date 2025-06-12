@@ -249,7 +249,7 @@ window.addEventListener('DOMContentLoaded', function () {
   let caseNum = 1;
   let section3_headText = document.querySelector('.section3_headText');
   let section3_mainText = document.querySelector('.section3_mainText');
-  
+
   function page3_motion() {
     document.querySelector('.section3_headText').classList.add('on');
     document.querySelector('.section3_mainText').classList.add('on');
@@ -364,9 +364,13 @@ window.addEventListener('DOMContentLoaded', function () {
   function page5_motion() {
     setInterval(() => {
       let firstEle = sc5_card[0].cloneNode(true);
-      slideTrans =-50;
       cardWrap.style.transform = `translateX(-${slideTrans}%)`;
-    }, 2000);
+      setTimeout(() => {
+        sc5_card[0].remove();
+        cardWrap.appendChild(firstEle);
+      }, 4500);
+      slideTrans = slideTrans + 52;
+    }, 4000);
 
 
     document.querySelector('.section5_left p').classList.add('on');
