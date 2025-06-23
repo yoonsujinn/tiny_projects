@@ -362,14 +362,25 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   function page5_motion() {
+
     setInterval(() => {
-      let firstEle = sc5_card[0].cloneNode(true);
-      cardWrap.style.transform = `translateX(-${slideTrans}%)`;
-      setTimeout(() => {
-        sc5_card[0].remove();
-        cardWrap.appendChild(firstEle);
-      }, 4500);
-      slideTrans = slideTrans + 52;
+      slideTrans < sc5_card.length-1 ? slideTrans++ : slideTrans = 0;
+      console.log(slideTrans,'slideTransslideTransslideTrans')
+      // if (slideTrans < sc5_card.length); {
+      //   slideTrans++
+      //   console.log(slideTrans);
+      // }else{
+      //   slideTrans = 0;
+      //   console.log(slideTrans);
+
+      // }
+      //   let firstEle = sc5_card[0].cloneNode(true);
+      //   cardWrap.style.transform = `translateX(-${slideTrans}%)`;
+      //   setTimeout(() => {
+      //     sc5_card[0].remove();
+      //     cardWrap.appendChild(firstEle);
+      //   }, 4500);
+      //   slideTrans = slideTrans + 52;
     }, 4000);
 
 
