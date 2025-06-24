@@ -184,8 +184,6 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
 
-
-
   page1_motion();
 
 
@@ -353,37 +351,17 @@ window.addEventListener('DOMContentLoaded', function () {
   ]
 
   // 페이지5슬라이드 초기설정
-  let cardWrap = document.querySelector('.sc5_slideWrap .cardWrap');
-  let sc5_card = document.querySelectorAll('.sc5_card');
-  let slideTrans = 0;
+  const cardWrap = document.querySelector('.sc5_slideWrap .cardWrap');
+  const sc5_card = document.querySelectorAll('.sc5_card');
   for (let i = 0; i <= sc5CardText.length - 1; i++) {
     sc5_card[i].style.backgroundImage = `${sc5CardText[i].backImg}`;
     sc5_card[i].innerHTML = `${sc5CardText[i].cardText}`
   }
+  var isRunning_5 = false;
+  let transLeft = 0;
+
 
   function page5_motion() {
-
-    setInterval(() => {
-      slideTrans < sc5_card.length-1 ? slideTrans++ : slideTrans = 0;
-      console.log(slideTrans,'slideTransslideTransslideTrans')
-      // if (slideTrans < sc5_card.length); {
-      //   slideTrans++
-      //   console.log(slideTrans);
-      // }else{
-      //   slideTrans = 0;
-      //   console.log(slideTrans);
-
-      // }
-      //   let firstEle = sc5_card[0].cloneNode(true);
-      //   cardWrap.style.transform = `translateX(-${slideTrans}%)`;
-      //   setTimeout(() => {
-      //     sc5_card[0].remove();
-      //     cardWrap.appendChild(firstEle);
-      //   }, 4500);
-      //   slideTrans = slideTrans + 52;
-    }, 4000);
-
-
     document.querySelector('.section5_left p').classList.add('on');
     setTimeout(() => {
       document.querySelector('.section5_left b').classList.add('on');
@@ -391,20 +369,44 @@ window.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
       document.querySelector('.section5_left strong').classList.add('on');
     }, 500);
-
-
-
+    transLeft + 52;
+    page5_motion_set();
   }
 
+  function page5_motion_set() {
+    if (!isRunning_5) {
+      intervalId_5 = setInterval(page5_motion_set_1, 4000);
+      isRunning_5 = true;
+    }
+  }
+  function page5_motion_set_1() {
+    let realTime_card = document.querySelectorAll('.sc5_card');
+    let sc5_card_first = realTime_card[0].cloneNode(true);
+    let sc5_card_second = realTime_card[1].cloneNode(true);
+    transLeft = transLeft - 52;
+    cardWrap.style.left=`${transLeft}%`
+    cardWrap.style.transition = '0.3s';
+    if(transLeft == -104) {
+      cardWrap.appendChild(sc5_card_first);
+      cardWrap.appendChild(sc5_card_second);
+    }else if(transLeft == -156) {
+      setTimeout(() => {
+        transLeft = 0;
+        cardWrap.style.transition = '0s';
+        cardWrap.removeChild(cardWrap.lastElementChild);
+        cardWrap.removeChild(cardWrap.lastElementChild);
+        cardWrap.style.left=`${transLeft}%`
+      }, 300);
 
+    }
+  }
 
   // ---------------------------------------------------------
   // -------------------5페이지 종료!!!!!!!--------------------
   // ----------------------------------------------------------
   function page5_motion_exit() {
-    document.querySelector('.section5_left p').classList.remove('on');
-    document.querySelector('.section5_left b').classList.remove('on');
-    document.querySelector('.section5_left strong').classList.remove('on');
+    clearInterval(intervalId_5);  // 반복 중단
+    isRunning_5 = false;          // 상태값도 false로 되돌림
   }
   page5_motion();
 
