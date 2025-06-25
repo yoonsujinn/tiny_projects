@@ -33,7 +33,7 @@
         <div class="headEle"></div>
       </div>
       <div class="ballWrap">
-        <div class="ball red"></div>
+        <div class="ball red on"></div>
         <div class="ball blue"></div>
         <div class="ball yellow"></div>
         <div class="ball green"></div>
@@ -76,34 +76,5 @@
 
   </div>
 </body>
-
+<script src="./script.js"></script>
 </html>
-<script>
-  const bottom_button = document.querySelector('.bottom_button');
-  const ball = document.querySelectorAll('.ballWrap .ball');
-  const result_Wrap = document.querySelector('.result_Wrap');
-  let x;
-  let y;
-  ball_min_X = 20;
-  ball_max_X = 313;
-  ball_min_Y = 25;
-  ball_max_Y = 202;
-  resultNumMax = 45;
-  resultNumMin = 1;
-
-  bottom_button.addEventListener('click', function () {
-    bottom_button.classList.add('on');
-    result_Wrap.classList.remove('ready');
-    
-    setInterval(() => {
-      ball.forEach(b => {
-        x = Math.random()*(ball_max_X - ball_min_X + 1 );
-        y = Math.random()*(ball_max_Y - ball_min_Y + 1 )
-        b.style.left = `${x}px`
-        b.style.bottom = `${y}px`
-      });
-    }, 1000);
-
-  })
-
-</script>

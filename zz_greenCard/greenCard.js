@@ -369,13 +369,13 @@ window.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
       document.querySelector('.section5_left strong').classList.add('on');
     }, 500);
-    transLeft + 52;
+    transLeft + 1;
     page5_motion_set();
   }
 
   function page5_motion_set() {
     if (!isRunning_5) {
-      intervalId_5 = setInterval(page5_motion_set_1, 4000);
+      intervalId_5 = setInterval(page5_motion_set_1, 2000);
       isRunning_5 = true;
     }
   }
@@ -383,13 +383,13 @@ window.addEventListener('DOMContentLoaded', function () {
     let realTime_card = document.querySelectorAll('.sc5_card');
     let sc5_card_first = realTime_card[0].cloneNode(true);
     let sc5_card_second = realTime_card[1].cloneNode(true);
-    transLeft = transLeft - 52;
-    cardWrap.style.left=`${transLeft}%`
+    transLeft = transLeft - 1;
+    cardWrap.style.left=`${transLeft*52}%`
     cardWrap.style.transition = '0.3s';
-    if(transLeft == -104) {
+    if(transLeft == -2) {
       cardWrap.appendChild(sc5_card_first);
       cardWrap.appendChild(sc5_card_second);
-    }else if(transLeft == -156) {
+    }else if(transLeft == -3) {
       setTimeout(() => {
         transLeft = 0;
         cardWrap.style.transition = '0s';
@@ -436,11 +436,9 @@ window.addEventListener('DOMContentLoaded', function () {
   page6_motion();
 
   function page7_motion() {
-    console.log('푸터터도착!~~!')
   }
 
   function page7_motion_exit() {
-    // console.log('푸터 나가기기!~~!')
   }
 
 })

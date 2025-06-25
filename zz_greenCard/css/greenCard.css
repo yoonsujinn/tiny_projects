@@ -29,13 +29,31 @@ body::-webkit-scrollbar {
 
 
 
-/* section1   */
 
 section.section_1 {
   background: #25C18D;
   min-width: 1270px;
-
 }
+section.section_2 {
+  min-width: 1274px;
+}
+
+section.section_3 {
+  min-width: 1270px;
+}
+
+section.section_4 {
+  min-width: 1270px;
+}
+section.section_5 {
+  min-width: 1270px;
+}
+
+
+
+
+/* section1   */
+
 
 section.section_1 article {
   display: flex;
@@ -1168,8 +1186,8 @@ section.section_1 .leftImg {
 }
 
 .sc5_slideWrap {
-  width: 694px;
-  height: 325px;
+  width: 658px;
+  height: 313px;
   overflow: hidden;
 }
 
@@ -1197,7 +1215,6 @@ section.section_1 .leftImg {
   font-size: 27px;
   font-weight: 600;
   color: #fff;
-
 }
 
 .sc5_slideWrap .cardWrap .sc5_card {
@@ -1454,7 +1471,7 @@ section {
 /* -----------------------2페이지--------------------------- */
 .section_5 .sectionWrap,
 .section_2 .sectionWrap {
-  gap: 150px;
+  gap: 80px;
 }
 
 .section5_left,
@@ -1473,6 +1490,7 @@ section {
   justify-content: center;
   width: 28%;
   margin: 0 0 0 110px;
+  min-width: 386px;
 }
 
 .section5_left>p,
