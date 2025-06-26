@@ -1,7 +1,8 @@
   const bottom_button = document.querySelector('.bottom_button');
   const ball = document.querySelectorAll('.ballWrap .ball');
+  const ballWrap = document.querySelector('.ballWrap');
   const result_Wrap = document.querySelector('.result_Wrap');
-  let rect = ball.getBoundingClientRect();
+  let ballWrapRect = ballWrap.getBoundingClientRect();
   let x;
   let y;
   ball_min_X = 20;
@@ -14,12 +15,13 @@
 
 
 
+
 // 볼 테두리 좌표 알아내는 방법
   
-let cx = rect.left + rect.width / 2;
-let cy = rect.top + rect.height / 2;
-let rx = rect.width / 2;
-let ry = rect.height / 2;
+let cx = ballWrapRect.left + ballWrapRect.width / 2;
+let cy = ballWrapRect.top + ballWrapRect.height / 2;
+let rx = ballWrapRect.width / 2;
+let ry = ballWrapRect.height / 2;
 
 let points = [];
 let step = 5;  // 정밀도: 1도 단위로 하고 싶으면 1로 바꿔도 됨
