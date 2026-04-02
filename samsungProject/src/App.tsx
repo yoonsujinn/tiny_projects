@@ -2,10 +2,13 @@ import "./App.css";
 import Header from "../components/Header";
 
 function App() {
-  const wrapBase = "p-4 bg-gray-100 rounded-lg shadow-md";
+  const wrapBase = "";
 
   return (
     <>
+      <video autoPlay muted loop className="fixed">
+        <source src="./images/video/main-video.mp4" type="video/mp4" />
+      </video>
       <Header wrapBase={wrapBase} />
     </>
   );
