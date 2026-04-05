@@ -3,24 +3,37 @@
 /* 커스텀폰트 */
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100..900&display=swap");
 
-/* 커스텀 유틸리티 */
-@layer utilities {
-  /* 여기는 단일클래스만 적용 가능 */
-}
 @layer base {
   header.on {
-    @apply bg-white;
+    @apply bg-white!;
   }
   header.on * {
     @apply text-black;
   }
   header.on img {
-    @apply invert-0;
+    @apply invert-0!;
   }
   header.on .iconWrap .icon_1 {
-    @apply bg-gray-100;
+    @apply bg-gray-100!;
   }
+
   .innerMenu.on {
-    @apply opacity-100!;
+    @apply opacity-100! scale-y-100!;
+  }
+  :has(.innerMenu.on) > a {
+    @apply text-[#006BEA]! border-b border-[#006BEA];
+  }
+  .innerLi > a:hover img {
+    @apply opacity-5!;
+  }
+  .contItem.new {
+    @apply after:content-['new'] after:text-[#007aff] after:absolute after:left-[-10%] after:top-[-10%] text-sm;
+  }
+  .contItem:hover img {
+    @apply scale-[1.1];
+  }
+
+  .bottomInnerMenu.on {
+    @apply opacity-100! scale-y-100!;
   }
 }
