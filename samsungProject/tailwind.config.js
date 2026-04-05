@@ -10,6 +10,7 @@ module.exports = {
       // 커스텀폰트 추가
       fontFamily: {
         nanumCoding: ["Nanum Gothic Coding", "monospace"],
+        NotoSans: ["Nanum Gothic Coding", "monospace"],
       },
     },
   },
