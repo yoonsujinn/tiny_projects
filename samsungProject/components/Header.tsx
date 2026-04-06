@@ -378,7 +378,7 @@ export default function Header({wrapBase}: HeaderProps) {
           <div
             className={`bottomInnerMenu ${bottomMenuHover == 1 ? "on" : ""}  flex bg-white absolute w-screen  border-box gap-5 left-[-1.3rem] pt-15 px-10 pb-10 top-[90%] origin-top duration-100 ease-in opacity-0 scale-y-0`}>
             <div className="grid grid-rows-2 grid-cols-7 gap-5">
-              {menuData.headerBottom_1.innerTap.map((item) => (
+              {/* {menuData.headerBottom_1.innerTap.map((item) => (
                 <a
                   className={`contItem ${item.new ? "new" : ""} w-28 px-4 flex flex-col items-center gap-2 cursor-pointer relative `}
                   key={item.id}
@@ -394,7 +394,7 @@ export default function Header({wrapBase}: HeaderProps) {
                     {item.name}
                   </p>
                 </a>
-              ))}
+              ))} */}
             </div>
             <ul className="text-black flex flex-col justify-between font-medium text-sm ml-3 pl-8 border-l border-[#e3e3e3]">
               <li className="text-xs! text-[#9f9f9f]!">더 알아보기 </li>
