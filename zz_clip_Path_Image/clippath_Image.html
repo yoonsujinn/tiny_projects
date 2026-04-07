@@ -6,9 +6,8 @@
   <link rel="stylesheet" href="./css/clippath_Image.css">
   <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 <body>
-
-  <div class="wrap">
-
+  <div class="wrapParent">
+     <div class="wrap">
     <div class="title">
       <div class="titleIcon"></div>
       <p>획순 보기</p>
@@ -34,8 +33,12 @@
       </div>
     </div>
   </div>
+
+  </div>
+ 
   
 </body>
+  <script src="../scale.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded',function() {
@@ -62,21 +65,10 @@ document.addEventListener('DOMContentLoaded',function() {
     svgImg[0].classList.add('active')
   })
 })
-
-  // svgImg.forEach(ele => {
-  //   ele.addEventListener('click', function(e) {
-  //     console.log(this)
-  //     // let firstIndex = [...svgImg].findIndex(ele => ele.classList.contains('off'))
-  //     // if(e.target.getAttribute('data-index') == firstIndex ) {
-  //     //   e.target.classList.remove('off')
-  //     //   e.target.classList.remove('on')
-  //     //   if(svgImg[firstIndex+1] && !svgImg[firstIndex+1].classList.contains('on')) {
-  //     //       svgImg[firstIndex+1].classList.add('on')
-  //     //   }
-  //     // }
-  //   })
-  // }); 
-
 </script>
+
+
+
+
 </html>
 
