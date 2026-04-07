@@ -265,69 +265,69 @@ export default function Header({wrapBase}: HeaderProps) {
                 setopenHeader(true);
                 setbottomMenuHover(1);
               }}>
-              <a href="" className="h-full py-1 px-2">
-                기획전
-              </a>
+              <a href="#">기획전</a>
+            </li>
+            <li
+              className="h-max"
+              onMouseEnter={() => {
+                setopenHeader(true);
+                setbottomMenuHover(2);
+              }}>
+              <a href="#">모바일</a>
             </li>
             <li
               onMouseEnter={() => {
                 setopenHeader(true);
               }}>
-              <a href="">모바일</a>
+              <a href="#">TV/영상∙음향</a>
             </li>
             <li
               onMouseEnter={() => {
                 setopenHeader(true);
               }}>
-              <a href="">TV/영상∙음향</a>
+              <a href="#">주방가전</a>
             </li>
             <li
               onMouseEnter={() => {
                 setopenHeader(true);
               }}>
-              <a href="">주방가전</a>
+              <a href="#">리빙가전</a>
             </li>
             <li
               onMouseEnter={() => {
                 setopenHeader(true);
               }}>
-              <a href="">리빙가전</a>
+              <a href="#">PC/주변기기</a>
             </li>
             <li
               onMouseEnter={() => {
                 setopenHeader(true);
               }}>
-              <a href="">PC/주변기기</a>
+              <a href="#">하만</a>
             </li>
             <li
               onMouseEnter={() => {
                 setopenHeader(true);
               }}>
-              <a href="">하만</a>
+              <a href="#">웨어러블</a>
             </li>
             <li
               onMouseEnter={() => {
                 setopenHeader(true);
               }}>
-              <a href="">웨어러블</a>
+              <a href="#">소모품/액세서리</a>
             </li>
             <li
               onMouseEnter={() => {
                 setopenHeader(true);
               }}>
-              <a href="">소모품/액세서리</a>
+              <a href="#">AI 구독클럽</a>
             </li>
             <li
               onMouseEnter={() => {
                 setopenHeader(true);
               }}>
-              <a href="">AI 구독클럽</a>
-            </li>
-            <li
-              onMouseEnter={() => {
-                setopenHeader(true);
-              }}>
-              <a href="">AI 신혼가전</a>
+              <a href="#">AI 신혼가전</a>
             </li>
           </ul>
           <div className="iconWrap flex gap-2.5 ml-auto items-center ">
@@ -376,15 +376,15 @@ export default function Header({wrapBase}: HeaderProps) {
             </svg>
           </div>
           <div
-            className={`bottomInnerMenu ${bottomMenuHover == 1 ? "on" : ""}  flex bg-white absolute w-screen  border-box gap-5 left-[-1.3rem] pt-15 px-10 pb-10 top-[90%] origin-top duration-100 ease-in opacity-0 scale-y-0`}>
+            className={`bottomInnerMenu ${bottomMenuHover == 1 ? "on" : ""}  flex bg-white absolute w-screen  border-box gap-5 left-[-1.3rem] pt-15 px-10 pb-10 top-[90%] origin-top duration-100 ease-in  scale-y-0 invisible`}>
             <div className="grid grid-rows-2 grid-cols-7 gap-5">
-              {/* {menuData.headerBottom_1.innerTap.map((item) => (
+              {menuData.headerBottom_1.innerTap.map((item) => (
                 <a
                   className={`contItem ${item.new ? "new" : ""} w-28 px-4 flex flex-col items-center gap-2 cursor-pointer relative `}
                   key={item.id}
                   href={item.href}>
                   <img
-                    className="w-full duration-200 ease-in"
+                    className="h-max-[80px] duration-200 ease-in"
                     src={item.src}
                     alt={item.name}
                     duration-300
@@ -394,9 +394,9 @@ export default function Header({wrapBase}: HeaderProps) {
                     {item.name}
                   </p>
                 </a>
-              ))} */}
+              ))}
             </div>
-            <ul className="text-black flex flex-col justify-between font-medium text-sm ml-3 pl-8 border-l border-[#e3e3e3]">
+            <ul className="text-black flex flex-col gap-y-1.5 font-medium text-sm ml-3 pl-8 border-l border-[#e3e3e3]">
               <li className="text-xs! text-[#9f9f9f]!">더 알아보기 </li>
               <li>
                 <a className="hover:text-[#9f9f9f]!" href="#">
