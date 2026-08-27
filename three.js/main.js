@@ -125,11 +125,25 @@ const originalPositions = new Float32Array(positionArray);
 
 const mouse = new THREE.Vector2(999, 999);
 
+// 마우스
 window.addEventListener("mousemove", (event) => {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 });
+
+// 모바일 터치
+window.addEventListener(
+  "touchmove",
+  (event) => {
+    const touch = event.touches[0];
+
+    mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
+
+    mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
+  },
+  {passive: true},
+);
 
 // --------------------------------
 // 애니메이션
