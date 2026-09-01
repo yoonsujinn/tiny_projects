@@ -1,0 +1,11 @@
+.boxWrap {
+  display: flex;
+  .box {
+    .img {
+      width: 270px;
+      height: 190px;
+      background-color: #ccc;
+      margin-right: 10px;
+    }
+  }
+}

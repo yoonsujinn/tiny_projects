@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-
+import "./BoardTemp.scss";
 interface Post {
   userId: number;
   id: number;
@@ -21,12 +21,18 @@ function BoardTemp() {
 
   return (
     <div>
-      {posts.map((post) => (
-        <div key={post.id}>
-          <h2>{post.title}</h2>
-          <p>{post.body}</p>
+      <div className="wrap">
+        <h1>board</h1>
+        <div className="boxWrap">
+          {posts.map((post) => (
+            <div className="box" key={post.id}>
+              <div className="img"></div>
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 }
